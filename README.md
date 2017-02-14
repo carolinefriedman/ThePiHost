@@ -1,6 +1,6 @@
 # ThePiHost
 
-####group members (username, name)
+##group members (username, name)
 *augr4882*, Austin Griffith
 
 *carolinefriedman*, Caroline Friedman
@@ -10,13 +10,13 @@
 *joshuaGriffiths*, Josh Griffiths
 
 
-####description
+##description
 
 
-####vision statement
+##vision statement
 
 
-####motivation
+##motivation
 
 
-####risks
+##risks
