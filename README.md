@@ -5,3 +5,15 @@
 * *carolinefriedman*, Caroline Friedman
 * *gpogoncheff*, Galen Pogoncheff
 * *joshuaGriffiths*, Josh Griffiths
+
+
+####description
+
+
+####vision statement
+
+
+####motivation
+
+
+####risks
