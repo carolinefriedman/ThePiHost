@@ -50,10 +50,10 @@
 
     5.  As a user, I want to have a nostalgic gaming experience so that I can play my favorite 90’s game in retro fashion.
     
-  ##Methodology
-    Agile
+##Methodology
+  Agile
     
-     The methodology we hope to implement is the agile process. This will allow us to monitor growth throughout the the project. To do this we will hold consistent team meetings in which we establish what we have accomplished and what we plan to accomplish before the next meeting. In this way we will achieve a semi functional product regularly throughout the work cycle for the remainder of the semester.
+  The methodology we hope to implement is the agile process. This will allow us to monitor growth throughout the the project. To do this we will hold consistent team meetings in which we establish what we have accomplished and what we plan to accomplish before the next meeting. In this way we will achieve a semi functional product regularly throughout the work cycle for the remainder of the semester.
   
   
   
