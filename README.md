@@ -33,6 +33,11 @@
   
   When deciding to move forward with our project is was pretty easy to identify the risks and hardships we will have to overcome in order to have a sucessful project. While we are working with a group of four and everyone brings to the table something a little different there are still many things we as a team do not know how to do such as web hosting, creating a working server (Raspberry Pi server), creating scripts to run the raspberry pi and boot games onto it. We also as a team have never messed around with a raspberry pi so learning the python language and scripts necessary to boot it, run it and then run our game program which will be a mix of Java and C++ will all be risks that need to be accounted for.  
   
+##Mitigation 
+  Mitigation strategy for dealing with the risk  
+  
+  In order to deal with the many risks we have as a team we have decided to split up the duties of certain tasks as a normal team in industry would do. Austin and Caroline are going to be in charge of learning and mastering the ins and outs of the Raspberry Pi and getting it running with the preloaded games we want. We will have to create the scripts necessary to boot the Raspberry Pi and have those scripts also load the menu controlling which game you would like to play as a user when the Raspberry Pi is powered on. We are going to assume this Raspberry Pi has only a few functions, the boot process, the loading of the game menu and the connection to the website where the games are being hosted. Galen and Josh are going to be in charge of the web hosting of the games and creating the website through which they will be hosted. They will also be in charge of connecting the pi as a server to the host website. We as a team are going to create a game in addition to all the games we preload from online emulators from the post 90's type games as well as well known arcade games that are still popular today. 
+  
 ##Lists of Requirments
 
     1.  As a home user, I want to be able to access the the game website from my home computer so that I can play games from the comfort of my home.
@@ -44,11 +49,7 @@
     4.  As a college student, I want to be able to play online games for free so that I can save my money for tuition.
 
     5.  As a user, I want to have a nostalgic gaming experience so that I can play my favorite 90’s game in retro fashion.
-  
-##Mitigation 
-  Mitigation strategy for dealing with the risk  
-  
-  In order to deal with the many risks we have as a team we have decided to split up the duties of certain tasks as a normal team in industry would do. Austin and Caroline are going to be in charge of learning and mastering the ins and outs of the Raspberry Pi and getting it running with the preloaded games we want. We will have to create the scripts necessary to boot the Raspberry Pi and have those scripts also load the menu controlling which game you would like to play as a user when the Raspberry Pi is powered on. We are going to assume this Raspberry Pi has only a few functions, the boot process, the loading of the game menu and the connection to the website where the games are being hosted. Galen and Josh are going to be in charge of the web hosting of the games and creating the website through which they will be hosted. They will also be in charge of connecting the pi as a server to the host website. We as a team are going to create a game in addition to all the games we preload from online emulators from the post 90's type games as well as well known arcade games that are still popular today. 
+    
   
   
   
