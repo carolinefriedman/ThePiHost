@@ -28,7 +28,7 @@
   No prior experience working with the people on the team,
   Lack of availability of some needed resource, etc.)
   
-  When deciding to move forward with our project is was pretty easy to identify the risks and hardships we will have to overcome in order to have a sucessful project. While we are working with a group of four, and everyone brings to the table something a little different, there are still many things we as a team do not know how to do such as web hosting, creating a working server (raspberry pi server), creating scripts to run the raspberry pi and boot games onto it. 
+  When deciding to move forward with our project is was pretty easy to identify the risks and hardships we will have to overcome in order to have a sucessful project. While we are working with a group of four, and everyone brings to the table something a little different, there are still many things we as a team do not know how to do such as web hosting, creating a working server (Raspberry Pi server), creating scripts to run the Raspberry Pi and boot games onto it. 
   
   
   
