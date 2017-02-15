@@ -31,7 +31,8 @@
   When deciding to move forward with our project is was pretty easy to identify the risks and hardships we will have to overcome in order to have a sucessful project. While we are working with a group of four, and everyone brings to the table something a little different, there are still many things we as a team do not know how to do such as web hosting, creating a working server (Raspberry Pi server), creating scripts to run the Raspberry Pi and boot games onto it. 
   
   
-  
+##user stories
+As a user, I want to have a nostalgic gaming experience so that I can play my favorite 90’s game in retro fashion.  
   
   
   
