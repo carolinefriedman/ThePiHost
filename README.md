@@ -24,7 +24,6 @@
 
 ##risks
   Risks: to project completion 
-  
   (these could include: working environment or language new to some team members,
   No prior experience working with the people on the team,
   Lack of availability of some needed resource, etc.)
