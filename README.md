@@ -32,7 +32,7 @@
   
   
 ##user stories
-As a user, I want to have a nostalgic gaming experience so that I can play my favorite 90’s game in retro fashion.  
+1. As a user, I want to have a nostalgic gaming experience so that I can play my favorite 90’s game in retro fashion.  
   
   
   
