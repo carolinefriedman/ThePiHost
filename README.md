@@ -56,6 +56,12 @@
   The methodology we hope to implement is the agile process. This will allow us to monitor growth throughout the the project. To do this we will hold consistent team meetings in which we establish what we have accomplished and what we plan to accomplish before the next meeting. In this way we will achieve a semi functional product regularly throughout the work cycle for the remainder of the semester.
   
   
+##Project Tracking software
+  Trello
+  
+  We will be using the online project tracking software called Trello and everyone in our group has signed up and made contributions to the story board we will be following. A link to the trello page we set up is included. 
+  https://trello.com/
   
   
+
   
