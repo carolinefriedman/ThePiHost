@@ -33,6 +33,18 @@
   
   When deciding to move forward with our project is was pretty easy to identify the risks and hardships we will have to overcome in order to have a sucessful project. While we are working with a group of four and everyone brings to the table something a little different there are still many things we as a team do not know how to do such as web hosting, creating a working server (raspberry pi server), creating scripts to run the raspberry pi and boot games onto it. We also as a team have never messed around with a raspberry pi so learning the python language and scripts necessary to boot it, run it and then run our game program which will be a mix of java and c++ will all be risks that need to be accounted for.  
   
+##Lists of Requirments
+
+    1.  As a home user, I want to be able to access the the game website from my home computer so that I can play games from the comfort of my home.
+
+    2.  As a game enthusiast, I want to be able to play a variety of games so that I do not get bored with the monotony of a single game.
+
+    3.  As an inexperienced computer user, I want a user interface that is easy to understand so that I can spend more time gaming and less time learning the interface.
+
+    4.  As a college student, I want to be able to play online games for free so that I can save my money for tuition.
+
+    5.  As a user, I want to have a nostalgic gaming experience so that I can play my favorite 90’s game in retro fashion.
+  
 ##Mitigation 
   Mitigation strategy for dealing with the risk  
   
