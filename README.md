@@ -13,7 +13,7 @@
   ThePiHost
 
 ##description
-  For our project this semester in CSCI 3308 Software Development class our group of four has decieded to move forward with creating a gaming host through a raspberry pi which will have many different games loaded onto it such as old nintendo 64 games, classic arcade games, and others of that sort that are hard to find in modern day and can be very expansive to buy and many times are even too old to work on a working game system. We are going to take all the loaded games on the Raspberry Pi and host them to a website making the Raspberry Pi more of a remote server that is always running so people can go online to our website and play such games with a USB controller on their own computer anywhere with an internet connection. 
+  For our project this semester in CSCI 3308 Software Development class our group of four has decieded to move forward with creating a gaming host through a Raspberry Pi which will have many different games loaded onto it such as old nintendo 64 games, classic arcade games, and others of that sort that are hard to find in modern day and can be very expansive to buy and many times are even too old to work on a working game system. We are going to take all the loaded games on the Raspberry Pi and host them to a website making the Raspberry Pi more of a remote server that is always running so people can go online to our website and play such games with a USB controller on their own computer anywhere with an internet connection. 
 
 
 ##vision statement
@@ -24,6 +24,7 @@
 
 ##risks
   Risks: to project completion 
+  
   (these could include: working environment or language new to some team members,
   No prior experience working with the people on the team,
   Lack of availability of some needed resource, etc.)
