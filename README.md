@@ -41,14 +41,22 @@
 ##Lists of Requirments
 
     1.  As a home user, I want to be able to access the the game website from my home computer so that I can play games from the comfort of my home.
+       Size: 4 hours
 
     2.  As a game enthusiast, I want to be able to play a variety of games so that I do not get bored with the monotony of a single game.
-
+       Size: 2 hours
+       
     3.  As an inexperienced computer user, I want a user interface that is easy to understand so that I can spend more time gaming and less time learning the interface.
-
+       Size: 2 hours
+       
     4.  As a college student, I want to be able to play online games for free so that I can save my money for tuition.
-
+       Size: 0 hours
+       
     5.  As a user, I want to have a nostalgic gaming experience so that I can play my favorite 90’s game in retro fashion.
+       Size: 2 hours
+       
+    6. As a member of the gamin community, I want to be able to comment on the webpage so that I can make suggestion for improvements.
+       Size: 3 hours
     
 ##Methodology
   Agile
