@@ -5,8 +5,8 @@ import java.awt.Rectangle;
 public class Alien{
   int x;
   int y;
-  int width = 10;
-  int height = 10;
+  int width = 15;
+  int height = 15;
   int moveSpeed = 1;
   boolean isDead = false;
 
@@ -47,4 +47,3 @@ public class Alien{
     this.bomb.render(graphics);
   }
 }
-

@@ -22,11 +22,11 @@ public class GameIO implements KeyListener{
     if (key == KeyEvent.VK_SPACE){
       spaceDefender.player.bullet.isShooting = true;
     }
-
+/*
     if (key == KeyEvent.VK_B){
       spaceDefender.alien.bomb.isShooting = true;
     }
-
+*/
   }
 
   public void keyReleased(KeyEvent e){
@@ -46,4 +46,3 @@ public class GameIO implements KeyListener{
   public void keyTyped(KeyEvent e){
   }
 }
-

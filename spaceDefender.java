@@ -21,8 +21,8 @@ public class spaceDefender extends Canvas implements Runnable{
 
   public static Shooter player;
   public static GameIO gameIO;
-  public static Alien alien;
-
+  //public static Alien alien;
+  public Alien[] alienArray = new Alien[10];
   public int bulletCounter = 0;
   //public static Bullets bullet;
 
@@ -48,7 +48,9 @@ public class spaceDefender extends Canvas implements Runnable{
     gameIO = new GameIO(this);
     player = new Shooter(WIDTH/2, HEIGHT - 15/*playerheight+5*/);
   //  bullet = new Bullets(player);
-    alien = new Alien(20,0);
+    for (int i = 0; i < 10; i++){
+      alienArray[i] = new Alien(20 + (25*i), 0);
+    }
   }
 
   public void run(){
@@ -77,7 +79,9 @@ public class spaceDefender extends Canvas implements Runnable{
   public void tick(){
     player.tick(this);
   //  bullet.tick(this);
-    alien.tick(this);
+    for (int i = 0; i < 10; i++){
+      alienArray[i].tick(this);
+    }
   }
 
   public void render(){
@@ -93,7 +97,9 @@ public class spaceDefender extends Canvas implements Runnable{
 
     player.render(graphics);
   //  bullet.render(graphics);
-    alien.render(graphics);
+    for (int i = 0; i < 10; i++){
+      alienArray[i].render(graphics);
+    }
 
     graphics.dispose();
     buffer.show();
@@ -105,4 +111,3 @@ public class spaceDefender extends Canvas implements Runnable{
   }
 
 }
-
