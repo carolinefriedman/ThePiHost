@@ -94,6 +94,9 @@ public class spaceDefender extends Canvas implements Runnable{
 
     Graphics graphics = buffer.getDrawGraphics();
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    
+   // graphics.setColor(Color.GREEN);
+   // graphics.drawString("Health: = " + player.health + "/100", 5, 15);
 
     player.render(graphics);
   //  bullet.render(graphics);
