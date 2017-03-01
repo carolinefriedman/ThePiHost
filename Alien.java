@@ -6,7 +6,7 @@ public class Alien{
   int x;
   int y;
   int width = 15;
-  int height = 15;
+  int height = 20;
   int moveSpeed = 1;
   boolean isDead = false;
 
@@ -32,18 +32,24 @@ public class Alien{
     x += moveSpeed;
     if (x >= game.WIDTH - width){
       moveSpeed = -moveSpeed;
-      x += moveSpeed;
+      x += this.moveSpeed;
     }
     if (x <= 0){
       moveSpeed = -moveSpeed;
       x += moveSpeed;
     }
-    this.bomb.tick(game);
+    this.bomb.tick(game, this);
   }
 
   public void render(Graphics graphics){
     graphics.setColor(Color.GREEN);
-    graphics.fillRect(x, y, width, height);
+    graphics.fillOval(x, y, width, height);
+    graphics.setColor(Color.BLACK);
+    graphics.fillRect(x+(width/2)-3, y+(height/2)-3, 2, 2);
+    graphics.fillRect(x+(width/2)+3, y+(height/2)-3, 2, 2);
+    graphics.fillRect(x+(width/2)-3, y+(height/2)+3, 7, 2);
+    graphics.fillRect(x+(width/2)-3, y+(height/2)+3, 2, 4);
+    graphics.fillRect(x+(width/2)+3, y+(height/2)+3, 2, 4);
     this.bomb.render(graphics);
   }
 }

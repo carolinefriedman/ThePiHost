@@ -25,14 +25,16 @@ public class AlienBomb{
   }
 
 //  public void tick(spaceDefender game, Shooter shooter){
-  public void tick(spaceDefender game){
+  public void tick(spaceDefender game, Alien alien){
+
   //    this.x = shooter.x;
 
-//    if (isShooting /*&& (inPlay == true)*/){
+//    if (isShooting && (inPlay == true)){
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
+
     if (y > game.HEIGHT || collision == true){
-      x = game.alien.x + (game.alien.width / 2);
-      y = game.alien.y;
+      x = alien.x + (alien.width / 2);
+      y = alien.y;
       isShooting = false;
       collision = false;
     }
@@ -41,17 +43,11 @@ public class AlienBomb{
       y += bombSpeed;
     }
     else{
-      x = game.alien.x + (game.alien.width / 2);
+      x = alien.x + (alien.width / 2);
     }
 
-//    collide(game);
-
-/*
-    if (y > game.getHeight()){
-      inPlay = false;
-    }
-*/
     collide(game);
+
   }
 
   private void collide(spaceDefender game){
@@ -66,4 +62,3 @@ public class AlienBomb{
     graphics.fillRect(x, y, width, height);
   }
 }
-

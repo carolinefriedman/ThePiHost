@@ -13,17 +13,20 @@ public class spaceDefender extends Canvas implements Runnable{
   static boolean gameRunning = false;
 
   //set dimensions of game window
-  public final int WIDTH = 400;
-  public final int HEIGHT = 225;
+  public final int WIDTH = 600;
+  public final int HEIGHT = 338;
   public final Dimension gameSize = new Dimension(WIDTH, HEIGHT);
 
   BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
   public static Shooter player;
   public static GameIO gameIO;
-  //public static Alien alien;
-  public Alien[] alienArray = new Alien[10];
-  public int bulletCounter = 0;
+//  public static Alien alien;
+//  public static Alien alien2;
+//  public Alien[] alienArray = new Alien[10];
+  public Alien[][] alienMatrix = new Alien[3][10];
+
+// public int bulletCounter = 0;
   //public static Bullets bullet;
 
   //public static AlienBomb bomb;
@@ -48,8 +51,11 @@ public class spaceDefender extends Canvas implements Runnable{
     gameIO = new GameIO(this);
     player = new Shooter(WIDTH/2, HEIGHT - 15/*playerheight+5*/);
   //  bullet = new Bullets(player);
-    for (int i = 0; i < 10; i++){
-      alienArray[i] = new Alien(20 + (25*i), 0);
+  //  alien = new Alien(20,0);
+    for (int i = 0; i < 3; i ++){
+      for (int j = 0; j < 10; j++){
+        alienMatrix[i][j] = new Alien(20 + (25*j), (25*i));
+      }
     }
   }
 
@@ -79,8 +85,16 @@ public class spaceDefender extends Canvas implements Runnable{
   public void tick(){
     player.tick(this);
   //  bullet.tick(this);
+  //  alien.tick(this);
+/*
     for (int i = 0; i < 10; i++){
       alienArray[i].tick(this);
+    }
+*/
+    for (int i = 0; i < 3; i ++){
+      for (int j = 0; j < 10; j++){
+        alienMatrix[i][j].tick(this);
+      }
     }
   }
 
@@ -94,16 +108,17 @@ public class spaceDefender extends Canvas implements Runnable{
 
     Graphics graphics = buffer.getDrawGraphics();
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-    
-   // graphics.setColor(Color.GREEN);
-   // graphics.drawString("Health: = " + player.health + "/100", 5, 15);
+
+    // graphics.setColor(Color.GREEN);
+    // graphics.drawString("Health: = " + player.health + "/100", 5, 15);
 
     player.render(graphics);
-  //  bullet.render(graphics);
-    for (int i = 0; i < 10; i++){
-      alienArray[i].render(graphics);
-    }
 
+    for (int i = 0; i < 3; i ++){
+      for (int j = 0; j < 10; j++){
+        alienMatrix[i][j].render(graphics);
+      }
+    }
     graphics.dispose();
     buffer.show();
   }
@@ -112,5 +127,8 @@ public class spaceDefender extends Canvas implements Runnable{
     spaceDefender game = new spaceDefender();
     game.start();
   }
+
+
+
 
 }

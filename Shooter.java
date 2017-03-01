@@ -8,7 +8,7 @@ public class Shooter{
   int health = 100;
   int width = 30;
   int height = 10;
-  int moveSpeed = 1;
+  int moveSpeed = 3;
   boolean moveLeft = false;
   boolean moveRight = false;
 
@@ -43,4 +43,3 @@ public class Shooter{
     bullet.render(graphics);
   }
 }
-

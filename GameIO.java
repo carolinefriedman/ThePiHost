@@ -2,6 +2,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
 public class GameIO implements KeyListener{
+
   public GameIO(spaceDefender game){
     game.addKeyListener(this);
   }
@@ -24,7 +25,7 @@ public class GameIO implements KeyListener{
     }
 /*
     if (key == KeyEvent.VK_B){
-      spaceDefender.alien.bomb.isShooting = true;
+      spaceDefender.alienMatrix[1][1].bomb.isShooting = true;
     }
 */
   }
