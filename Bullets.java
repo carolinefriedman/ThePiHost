@@ -8,6 +8,7 @@ public class Bullets{
   int bulletSpeed = 3;
   int width = 3;
   int height = 3;
+  int score = 0;
   boolean inPlay;
   boolean isShooting = false;
   boolean moveLeft = false;
@@ -64,6 +65,7 @@ public class Bullets{
           game.alienMatrix[i][j].isDead = true;
           game.alienMatrix[i][j].x = -50;
           collision = true;
+          score ++;
         }
       }
     }
