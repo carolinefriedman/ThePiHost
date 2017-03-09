@@ -13,6 +13,8 @@ public class Tennis extends Canvas implements Runnable {
 
   JFrame frame;
 
+  public static PlayerPaddle player;
+
   //window sizing
   public final int WIDTH = 400;
   public final int HEIGHT = 225;
@@ -75,10 +77,12 @@ public class Tennis extends Canvas implements Runnable {
     frame.setLocationRelativeTo(null);
 
     // initiate paddle and ball instances here
+    player = new PlayerPaddle(10, 60);
   }
 
   public void tick(){
     //call tick for player and ball instances here
+    player.tick(this);
   }
 
   public void render(){
@@ -97,6 +101,7 @@ public class Tennis extends Canvas implements Runnable {
     g.drawString("Computer: " + compScore, getWidth() - 87, 15);
 
   //call render for player and ball instances here
+    player.render(g);
 
     g.dispose();
     bs.show();
