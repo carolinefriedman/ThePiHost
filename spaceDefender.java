@@ -14,7 +14,7 @@ public class spaceDefender extends Canvas implements Runnable{
 
   //set dimensions of game window
   public final int WIDTH = 600;
-  public final int HEIGHT = 338;
+  public final int HEIGHT = 358;
   public final Dimension gameSize = new Dimension(WIDTH, HEIGHT);
 
   BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
@@ -49,7 +49,7 @@ public class spaceDefender extends Canvas implements Runnable{
     //set to center of screen
     frame.setLocationRelativeTo(null);
     gameIO = new GameIO(this);
-    player = new Shooter(WIDTH/2, HEIGHT - 15/*playerheight+5*/);
+    player = new Shooter(WIDTH/2, HEIGHT - 35/*playerheight+5*/);
   //  bullet = new Bullets(player);
   //  alien = new Alien(20,0);
     for (int i = 0; i < 3; i ++){
@@ -109,8 +109,8 @@ public class spaceDefender extends Canvas implements Runnable{
     Graphics graphics = buffer.getDrawGraphics();
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 
-    // graphics.setColor(Color.GREEN);
-    // graphics.drawString("Health: = " + player.health + "/100", 5, 15);
+    graphics.setColor(Color.GREEN);
+    graphics.drawString("Health: = " + player.health + "/100", 5, HEIGHT-10);
 
     player.render(graphics);
 
