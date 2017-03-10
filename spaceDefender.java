@@ -98,6 +98,16 @@ public class spaceDefender extends Canvas implements Runnable{
     }
   }
 
+  public void GameOver(Graphics graphics, BufferStrategy buffer){
+    graphics.setColor(Color.GREEN);
+    graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    graphics.setColor(Color.GREEN);
+    graphics.drawString("GAME OVER", 2, HEIGHT-5);
+    graphics.dispose();
+    buffer.show();
+    gameRunning = false;
+  }
+
   public void render(){
     //BufferStrategy is the way in which it is Buffered
     BufferStrategy buffer = getBufferStrategy();
@@ -111,15 +121,7 @@ public class spaceDefender extends Canvas implements Runnable{
 
     graphics.setColor(Color.GREEN);
     graphics.drawString("Health: = " + player.health + "/100", 5, HEIGHT-10);
-	graphics.drawString("Score: = " + shooter.score, getWidth()- 25, HEIGHT-10);
-    
-    if(player.health == 0){
-
-		graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-		graphics.setColor(Color.BLACK);
-		graphics.drawString(“GAME OVER”, 2.5, HEIGHT-5);
-
-	}
+	  graphics.drawString("Score: = " + player.bullet.playerScore, getWidth()- 75, HEIGHT-10);
 
     player.render(graphics);
 
@@ -128,8 +130,18 @@ public class spaceDefender extends Canvas implements Runnable{
         alienMatrix[i][j].render(graphics);
       }
     }
+
+    if(player.bullet.playerScore == 2){
+      player.health = 0;
+    }
+
+    if (player.health == 0){
+      GameOver(graphics, buffer);
+    }
+
     graphics.dispose();
     buffer.show();
+
   }
 
   public static void main(String args[]){

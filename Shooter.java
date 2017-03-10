@@ -11,7 +11,6 @@ public class Shooter{
   int moveSpeed = 3;
   boolean moveLeft = false;
   boolean moveRight = false;
-
   Bullets bullet;
 
   Rectangle boundingBox;
