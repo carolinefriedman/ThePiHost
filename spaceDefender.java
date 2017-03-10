@@ -111,6 +111,7 @@ public class spaceDefender extends Canvas implements Runnable{
 
     graphics.setColor(Color.GREEN);
     graphics.drawString("Health: = " + player.health + "/100", 5, HEIGHT-10);
+	graphics.drawString("Score: = " + shooter.score, getWidth()- 25, HEIGHT-10);
     
     if(player.health == 0){
 
