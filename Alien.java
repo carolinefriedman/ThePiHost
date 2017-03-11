@@ -38,6 +38,12 @@ public class Alien{
       moveSpeed = -moveSpeed;
       x += moveSpeed;
     }
+/*
+    //move aliens down
+    if (game.cnt != 0 && (game.cnt % 5) == 0){
+      this.y += 1;
+    }
+*/
     this.bomb.tick(game, this);
   }
 

@@ -8,6 +8,10 @@ import java.awt.image.BufferStrategy;
 import java.awt.Color;
 import java.awt.event.MouseListener;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 public class spaceDefender extends Canvas implements Runnable{
   //is game running?
   static boolean gameRunning = false;
@@ -25,6 +29,8 @@ public class spaceDefender extends Canvas implements Runnable{
 //  public static Alien alien2;
 //  public Alien[] alienArray = new Alien[10];
   public Alien[][] alienMatrix = new Alien[3][10];
+
+  public static int cnt;
 
 // public int bulletCounter = 0;
   //public static Bullets bullet;
@@ -130,12 +136,12 @@ public class spaceDefender extends Canvas implements Runnable{
         alienMatrix[i][j].render(graphics);
       }
     }
-
-    if(player.bullet.playerScore == 2){
+/*
+    if(this.cnt == 10){
       player.health = 0;
     }
-
-    if (player.health == 0){
+*/
+    if (player.health < 0){
       GameOver(graphics, buffer);
     }
 
@@ -146,6 +152,15 @@ public class spaceDefender extends Canvas implements Runnable{
 
   public static void main(String args[]){
     spaceDefender game = new spaceDefender();
+    ActionListener actListner = new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent event) {
+        cnt += 1;
+      }
+    };
+    Timer timer = new Timer(1000, actListner);
+    timer.start();
+
     game.start();
   }
 
