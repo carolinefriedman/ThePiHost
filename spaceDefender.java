@@ -31,6 +31,7 @@ public class spaceDefender extends Canvas implements Runnable{
   public Alien[][] alienMatrix = new Alien[3][10];
 
   public static int cnt;
+  static boolean entered = false;
 
 // public int bulletCounter = 0;
   //public static Bullets bullet;
@@ -104,6 +105,17 @@ public class spaceDefender extends Canvas implements Runnable{
     }
   }
 
+  // display start game screen (press space to start)
+  public void gameEntry(Graphics graphics, BufferStrategy buffer){
+    graphics.setColor(Color.GREEN);
+    graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    graphics.setColor(Color.GREEN);
+    graphics.drawString("Press Space to start", 2, HEIGHT-5);
+    graphics.dispose();
+    buffer.show();
+    //while(this.entered != true);
+  }
+
   public void GameOver(Graphics graphics, BufferStrategy buffer){
     graphics.setColor(Color.GREEN);
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
@@ -123,6 +135,9 @@ public class spaceDefender extends Canvas implements Runnable{
     }
 
     Graphics graphics = buffer.getDrawGraphics();
+
+    //gameEntry(graphics, buffer);
+
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 
     graphics.setColor(Color.GREEN);
@@ -152,6 +167,7 @@ public class spaceDefender extends Canvas implements Runnable{
 
   public static void main(String args[]){
     spaceDefender game = new spaceDefender();
+
     ActionListener actListner = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent event) {
@@ -159,6 +175,7 @@ public class spaceDefender extends Canvas implements Runnable{
       }
     };
     Timer timer = new Timer(1000, actListner);
+
     timer.start();
 
     game.start();
