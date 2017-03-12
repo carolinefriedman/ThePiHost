@@ -14,6 +14,8 @@ public class Tennis extends Canvas implements Runnable {
   JFrame frame;
 
   public static PlayerPaddle player;
+  public static ComputerPaddle compplayer;
+  public static Ball ball;
 
   //window sizing
   public final int WIDTH = 400;
@@ -78,33 +80,39 @@ public class Tennis extends Canvas implements Runnable {
 
     // initiate paddle and ball instances here
     player = new PlayerPaddle(10, 60);
+    compplayer = new ComputerPaddle(getWidth() - 25, 60);
+    ball = new Ball((getWidth()/2), (getHeight()/2));
   }
 
   public void tick(){
     //call tick for player and ball instances here
     player.tick(this);
+    compplayer.tick(this);
+    ball.tick(this);
   }
 
   public void render(){
     //BufferStrategy is the way in which it is Buffered
-    BufferStrategy bs = getBufferStrategy();
+    BufferStrategy buffStrat = getBufferStrategy();
     if (bs == null){  //if there is no buffer strategy
       createBufferStrategy(3);  //set BufferStrategy to 3
       return;
     }
 
-    Graphics g = bs.getDrawGraphics();
-    g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-    g.setColor(Color.GREEN);
+    Graphics graphics = buffStrat.getDrawGraphics();
+    graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    graphics.setColor(Color.GREEN);
     // print scores
-    g.drawString("Player: " + playerScore, 5, 15);
-    g.drawString("Computer: " + compScore, getWidth() - 87, 15);
+    graphics.drawString("Player: " + playerScore, 5, 15);
+    graphics.drawString("Computer: " + compScore, getWidth() - 87, 15);
 
   //call render for player and ball instances here
     player.render(g);
+    compplayer.render(g);
+    ball.render(g);
 
-    g.dispose();
-    bs.show();
+    graphics.dispose();
+    buffStrat.show();
   }
 
   public static void main(String[] args){
@@ -113,4 +121,3 @@ public class Tennis extends Canvas implements Runnable {
     game.start();
   }
 }
-
