@@ -94,7 +94,7 @@ public class Tennis extends Canvas implements Runnable {
   public void render(){
     //BufferStrategy is the way in which it is Buffered
     BufferStrategy buffStrat = getBufferStrategy();
-    if (bs == null){  //if there is no buffer strategy
+    if (buffStrat == null){  //if there is no buffer strategy
       createBufferStrategy(3);  //set BufferStrategy to 3
       return;
     }
@@ -107,9 +107,9 @@ public class Tennis extends Canvas implements Runnable {
     graphics.drawString("Computer: " + compScore, getWidth() - 87, 15);
 
   //call render for player and ball instances here
-    player.render(g);
-    compplayer.render(g);
-    ball.render(g);
+    player.render(graphics);
+    compplayer.render(graphics);
+    ball.render(graphics);
 
     graphics.dispose();
     buffStrat.show();

@@ -16,7 +16,7 @@ public class ComputerPaddle{
   boolean goingUp = false;
   boolean goingDown = false;
 
-  public CompPaddle(int x, int y){
+  public ComputerPaddle(int x, int y){
     this.x = x;
     this.y = y;
 
@@ -24,7 +24,7 @@ public class ComputerPaddle{
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
   }
 
-  public void tick(pongGame game){
+  public void tick(Tennis game){
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
 
     if(game.ball.y < y && y >= 0){

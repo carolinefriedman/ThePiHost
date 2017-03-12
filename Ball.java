@@ -25,7 +25,7 @@ public class Ball{
     velocityY = speed;
   }
 
-  public void tick(pongGame game){
+  public void tick(Tennis game){
     boundingBox.setBounds(this.x, this.y, this.size, this.size);
     //if there is a collosion with end of screen
     //if ball hits left wall
@@ -52,7 +52,7 @@ public class Ball{
     paddleCollide(game);
   }
 
-  private void paddleCollide(pongGame game){
+  private void paddleCollide(Tennis game){
     if(boundingBox.intersects(game.player.boundingBox)){
       velocityX = speed;
     }
