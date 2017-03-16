@@ -16,6 +16,7 @@ public class Tennis extends Canvas implements Runnable {
   public static PlayerPaddle player;
   public static ComputerPaddle compplayer;
   public static Ball ball;
+  public static GameIO io;
 
   //window sizing
   public final int WIDTH = 400;
@@ -82,6 +83,7 @@ public class Tennis extends Canvas implements Runnable {
     player = new PlayerPaddle(10, 60);
     compplayer = new ComputerPaddle(getWidth() - 25, 60);
     ball = new Ball((getWidth()/2), (getHeight()/2));
+    io = new GameIO(this);
   }
 
   public void tick(){
