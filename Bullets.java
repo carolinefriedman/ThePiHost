@@ -51,14 +51,8 @@ public class Bullets{
   }
 
   private void collide(spaceDefender game){
-/*
-    for (int i = 0; i < 10; i ++){
-      if(boundingBox.intersects(game.alienArray[i].boundingBox)){
-        game.alienArray[i].isDead = true;
-        game.alienArray[i].x = -50;
-      }
-    }
-*/
+
+
     for (int i =0; i < 3; i ++){
       for (int j = 0; j < 10; j ++){
         if(boundingBox.intersects(game.alienMatrix[i][j].boundingBox)){
@@ -69,6 +63,7 @@ public class Bullets{
         }
       }
     }
+    
   }
 
   public void render(Graphics graphics){

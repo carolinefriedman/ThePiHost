@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.Color;
 import java.awt.event.MouseListener;
+import java.util.Random;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,13 +26,12 @@ public class spaceDefender extends Canvas implements Runnable{
 
   public static Shooter player;
   public static GameIO gameIO;
-//  public static Alien alien;
-//  public static Alien alien2;
-//  public Alien[] alienArray = new Alien[10];
+
   public Alien[][] alienMatrix = new Alien[3][10];
 
   public static int cnt;
   static boolean entered = false;
+  Random random;
 
 // public int bulletCounter = 0;
   //public static Bullets bullet;
@@ -57,13 +57,15 @@ public class spaceDefender extends Canvas implements Runnable{
     frame.setLocationRelativeTo(null);
     gameIO = new GameIO(this);
     player = new Shooter(WIDTH/2, HEIGHT - 35/*playerheight+5*/);
+    random = new Random();
   //  bullet = new Bullets(player);
-  //  alien = new Alien(20,0);
+
     for (int i = 0; i < 3; i ++){
       for (int j = 0; j < 10; j++){
         alienMatrix[i][j] = new Alien(20 + (25*j), (25*i));
       }
     }
+
   }
 
   public void run(){
@@ -92,17 +94,18 @@ public class spaceDefender extends Canvas implements Runnable{
   public void tick(){
     player.tick(this);
   //  bullet.tick(this);
-  //  alien.tick(this);
-/*
-    for (int i = 0; i < 10; i++){
-      alienArray[i].tick(this);
+    if (cnt != 0 && cnt % 100 == 0){
+      int x = random.nextInt(3);
+      int y = random.nextInt(10);
+      this.alienMatrix[x][y].bomb.isShooting = true;
     }
-*/
+
     for (int i = 0; i < 3; i ++){
       for (int j = 0; j < 10; j++){
         alienMatrix[i][j].tick(this);
       }
     }
+
   }
 
   // display start game screen (press space to start)
@@ -136,21 +139,26 @@ public class spaceDefender extends Canvas implements Runnable{
 
     Graphics graphics = buffer.getDrawGraphics();
 
-    //gameEntry(graphics, buffer);
+    if (!this.entered){
+      gameEntry(graphics, buffer);
+    }
 
-    graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    else{
+      graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
 
-    graphics.setColor(Color.GREEN);
-    graphics.drawString("Health: = " + player.health + "/100", 5, HEIGHT-10);
-	  graphics.drawString("Score: = " + player.bullet.playerScore, getWidth()- 75, HEIGHT-10);
+      graphics.setColor(Color.GREEN);
+      graphics.drawString("Health: = " + player.health + "/100", 5, HEIGHT-10);
+  	  graphics.drawString("Score: = " + player.bullet.playerScore, getWidth()- 75, HEIGHT-10);
 
-    player.render(graphics);
+      player.render(graphics);
 
-    for (int i = 0; i < 3; i ++){
-      for (int j = 0; j < 10; j++){
-        alienMatrix[i][j].render(graphics);
+      for (int i = 0; i < 3; i ++){
+        for (int j = 0; j < 10; j++){
+          alienMatrix[i][j].render(graphics);
+        }
       }
     }
+
 /*
     if(this.cnt == 10){
       player.health = 0;
@@ -171,10 +179,11 @@ public class spaceDefender extends Canvas implements Runnable{
     ActionListener actListner = new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent event) {
-        cnt += 1;
+        if (entered)
+          cnt += 1;
       }
     };
-    Timer timer = new Timer(1000, actListner);
+    Timer timer = new Timer(1, actListner);
 
     timer.start();
 

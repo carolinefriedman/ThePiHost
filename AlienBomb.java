@@ -31,10 +31,12 @@ public class AlienBomb{
 
 //    if (isShooting && (inPlay == true)){
 
-    if (game.cnt != 0 && game.cnt % 5 == 0){
-      this.isShooting = true;
+    //if (game.cnt != 0 && game.cnt % 20 == 0){
+    //  this.isShooting = true;
+    //}
+    if(!isShooting){
+      y = alien.y;
     }
-
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
 
     if (y > game.player.y){
