@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 public class Bullets{
   int x;
   int y;
-  int bulletSpeed = 4;
+  int bulletSpeed = 10;
   int width = 3;
   int height = 3;
   int playerScore = 0;

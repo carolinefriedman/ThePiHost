@@ -40,9 +40,9 @@ public class Alien{
     }
 
     //move aliens down
-    if (game.cnt != 0 && (game.cnt % 500) == 0){
-      this.y += 10;
-    }
+    //if (game.cnt != 0 && (game.cnt % 500) == 0){
+    //  this.y += 10;
+    //}
 
     this.bomb.tick(game, this);
   }

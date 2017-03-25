@@ -16,6 +16,8 @@ import javax.swing.Timer;
 public class spaceDefender extends Canvas implements Runnable{
   //is game running?
   static boolean gameRunning = false;
+  int level = 1;
+  int dropTimer = 100;
 
   //set dimensions of game window
   public final int WIDTH = 600;
@@ -94,7 +96,7 @@ public class spaceDefender extends Canvas implements Runnable{
   public void tick(){
     player.tick(this);
   //  bullet.tick(this);
-    if (cnt != 0 && cnt % 100 == 0){
+    if (cnt != 0 && cnt % dropTimer == 0){
       int x = random.nextInt(3);
       int y = random.nextInt(10);
       this.alienMatrix[x][y].bomb.isShooting = true;
@@ -103,6 +105,9 @@ public class spaceDefender extends Canvas implements Runnable{
     for (int i = 0; i < 3; i ++){
       for (int j = 0; j < 10; j++){
         alienMatrix[i][j].tick(this);
+        if (this.cnt != 0 && (this.cnt % 500) == 0){
+          alienMatrix[i][j].y += 10;
+        }
       }
     }
 
@@ -113,7 +118,11 @@ public class spaceDefender extends Canvas implements Runnable{
     graphics.setColor(Color.GREEN);
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
     graphics.setColor(Color.GREEN);
-    graphics.drawString("Press Space to start", 2, HEIGHT-5);
+    graphics.drawString("Press Space to start", WIDTH/2 - 100, HEIGHT/2 - 30);
+    graphics.drawString("Controls:", WIDTH/2 - 100, HEIGHT/2 + 0);
+    graphics.drawString("   Move Left: Left Arrow", WIDTH/2 - 100, HEIGHT/2 + 15);
+    graphics.drawString("   Move Right: Right Arrow", WIDTH/2 - 100, HEIGHT/2 + 30);
+    graphics.drawString("   Shoot: Space Bar", WIDTH/2 - 100, HEIGHT/2 + 45);
     graphics.dispose();
     buffer.show();
     //while(this.entered != true);
@@ -123,7 +132,8 @@ public class spaceDefender extends Canvas implements Runnable{
     graphics.setColor(Color.GREEN);
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
     graphics.setColor(Color.GREEN);
-    graphics.drawString("GAME OVER", 2, HEIGHT-5);
+    graphics.drawString("GAME OVER", WIDTH/2 - 50, HEIGHT/2 - 30);
+    graphics.drawString("Total Score: " + player.bullet.playerScore, WIDTH/2 - 60, HEIGHT/2);
     graphics.dispose();
     buffer.show();
     gameRunning = false;
@@ -152,11 +162,32 @@ public class spaceDefender extends Canvas implements Runnable{
 
       player.render(graphics);
 
-      for (int i = 0; i < 3; i ++){
+      boolean allDead = true;
+      for (int i = 0; i < 3; i++){
         for (int j = 0; j < 10; j++){
           alienMatrix[i][j].render(graphics);
+          allDead = allDead && alienMatrix[i][j].isDead;
         }
       }
+
+      // if all aliens are dead, increase level,
+      // reset alien positions, and make bombs drop
+      // more frequently
+
+      if (allDead == true){
+        this.level++;
+        for (int i = 0; i < 3; i ++){
+          for (int j = 0; j < 10; j++){
+            alienMatrix[i][j].isDead = false;
+            alienMatrix[i][j].x = 20 + (25*j);
+            alienMatrix[i][j].y = 25 * i;
+            alienMatrix[i][j].moveSpeed += 1;
+            dropTimer -= 20;
+            allDead = false;
+          }
+        }
+      }
+
     }
 
 /*
