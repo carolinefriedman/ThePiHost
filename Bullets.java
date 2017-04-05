@@ -5,9 +5,10 @@ import java.awt.Rectangle;
 public class Bullets{
   int x;
   int y;
-  int bulletSpeed = 3;
+  int bulletSpeed = 10;
   int width = 3;
   int height = 3;
+  int playerScore = 0;
   boolean inPlay;
   boolean isShooting = false;
   boolean moveLeft = false;
@@ -22,7 +23,7 @@ public class Bullets{
     this.x = shooter.x + (shooter.width / 2);
     this.y = shooter.y;
     this.moveSpeed = shooter.moveSpeed;
-    boolean inPlay = true;
+    this.inPlay = true;
   }
 
   public void tick(spaceDefender game){
@@ -50,23 +51,19 @@ public class Bullets{
   }
 
   private void collide(spaceDefender game){
-/*
-    for (int i = 0; i < 10; i ++){
-      if(boundingBox.intersects(game.alienArray[i].boundingBox)){
-        game.alienArray[i].isDead = true;
-        game.alienArray[i].x = -50;
-      }
-    }
-*/
+
+
     for (int i =0; i < 3; i ++){
       for (int j = 0; j < 10; j ++){
         if(boundingBox.intersects(game.alienMatrix[i][j].boundingBox)){
           game.alienMatrix[i][j].isDead = true;
           game.alienMatrix[i][j].x = -50;
           collision = true;
+          playerScore ++;
         }
       }
     }
+
   }
 
   public void render(Graphics graphics){
