@@ -23,7 +23,7 @@ public class Bullets{
     this.x = shooter.x + (shooter.width / 2);
     this.y = shooter.y;
     this.moveSpeed = shooter.moveSpeed;
-    boolean inPlay = true;
+    inPlay = true;
   }
 
   public void tick(spaceDefender game){
