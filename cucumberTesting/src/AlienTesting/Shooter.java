@@ -13,7 +13,7 @@ public class Shooter{
   public int moveSpeed = 3;
   public boolean moveLeft = false;
   public boolean moveRight = false;
-  Bullets bullet;
+  public Bullets bullet;
 
   Rectangle boundingBox;
 

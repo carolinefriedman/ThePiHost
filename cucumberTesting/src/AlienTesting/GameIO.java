@@ -1,7 +1,7 @@
 package AlienTesting;
 
-import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class GameIO implements KeyListener{
 
@@ -9,8 +9,8 @@ public class GameIO implements KeyListener{
     game.addKeyListener(this);
   }
 
-  public void keyPressed(KeyEvent e){
-    int key = e.getKeyCode();
+  public void key_Pressed(int event){
+    int key = event;
 
     if (key == KeyEvent.VK_LEFT){
       spaceDefender.player.moveLeft = true;
@@ -33,8 +33,8 @@ public class GameIO implements KeyListener{
 */
   }
 
-  public void keyReleased(KeyEvent e){
-    int key = e.getKeyCode();
+  public void key_Released(int x){
+    int key = x;
 
     if (key == KeyEvent.VK_LEFT){
       spaceDefender.player.moveLeft = false;
@@ -49,4 +49,16 @@ public class GameIO implements KeyListener{
 
   public void keyTyped(KeyEvent e){
   }
+
+@Override
+public void keyReleased(KeyEvent e) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void keyPressed(KeyEvent e) {
+	// TODO Auto-generated method stub
+	
+}
 }

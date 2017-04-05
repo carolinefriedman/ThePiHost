@@ -1,25 +1,24 @@
 package AlienTesting;
 
-import java.awt.Canvas;
-import java.awt.Dimension;
 import java.awt.BorderLayout;
-import javax.swing.JFrame;
-import java.awt.image.BufferedImage;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
+import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.event.MouseListener;
-import java.util.Random;
-
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.util.Random;
+
+import javax.swing.JFrame;
 import javax.swing.Timer;
 
 public class spaceDefender extends Canvas implements Runnable{
   //is game running?
-  static boolean gameRunning = false;
-  int level = 1;
-  int dropTimer = 100;
+  public static boolean gameRunning = false;
+  public int level = 1;
+  public int dropTimer = 100;
 
   //set dimensions of game window
   public final int WIDTH = 600;
@@ -34,8 +33,12 @@ public class spaceDefender extends Canvas implements Runnable{
   public Alien[][] alienMatrix = new Alien[3][10];
 
   public static int cnt;
-  static boolean entered = false;
+  public static boolean entered = false;
   Random random;
+  public int x;
+  public int y;
+  
+  public boolean allDead2 = false;
 
 // public int bulletCounter = 0;
   //public static Bullets bullet;
@@ -99,8 +102,8 @@ public class spaceDefender extends Canvas implements Runnable{
     player.tick(this);
   //  bullet.tick(this);
     if (cnt != 0 && cnt % dropTimer == 0){
-      int x = random.nextInt(3);
-      int y = random.nextInt(10);
+      x = random.nextInt(3);
+      y = random.nextInt(10);
       this.alienMatrix[x][y].bomb.isShooting = true;
     }
 
@@ -176,7 +179,7 @@ public class spaceDefender extends Canvas implements Runnable{
       // reset alien positions, and make bombs drop
       // more frequently
 
-      if (allDead == true){
+      if (allDead2 == true){
         this.level++;
         for (int i = 0; i < 3; i ++){
           for (int j = 0; j < 10; j++){

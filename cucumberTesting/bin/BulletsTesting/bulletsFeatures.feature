@@ -15,10 +15,6 @@ Feature: Testing Bullets Class constructor and methods
 		Then y coordinate of bullet increases by bulletSpeed
 		
 	Scenario: Test Bullets Tick Method, checking movement when not shooting and moving left
-		Given user isnt pressing left arrow or spacebar
-		And x coordinate of bullet is less than game.WIDHT - bullet width
+		Given user is pressing left arrow or spacebar
+		And x coordinate of bullet is greater than zero
 		Then x coordinate of bullet increases by moveSpeed
-		
-	Scenario: Test Bullet Collide method
-		Given alien is dead
-		Then test positive for collision and player score is increased

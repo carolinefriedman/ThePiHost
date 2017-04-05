@@ -5,19 +5,19 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 public class Bullets{
-  int x;
-  int y;
-  int bulletSpeed = 10;
-  int width = 3;
-  int height = 3;
-  int playerScore = 0;
-  boolean inPlay;
-  boolean isShooting = false;
-  boolean moveLeft = false;
-  boolean moveRight = false;
-  int moveSpeed;
+  public int x;
+  public int y;
+  public int bulletSpeed = 10;
+  public int width = 3;
+  public int height = 3;
+  public int playerScore = 0;
+  public boolean inPlay;
+  public boolean isShooting = false;
+  public boolean moveLeft = false;
+  public boolean moveRight = false;
+  public int moveSpeed;
   Rectangle boundingBox;
-  boolean collision = false;
+  public boolean collision = false;
 
   public Bullets(Shooter shooter){
     boundingBox = new Rectangle(x, y, width, height);
@@ -25,7 +25,7 @@ public class Bullets{
     this.x = shooter.x + (shooter.width / 2);
     this.y = shooter.y;
     this.moveSpeed = shooter.moveSpeed;
-    boolean inPlay = true;
+    this.inPlay = true;
   }
 
   public void tick(spaceDefender game){

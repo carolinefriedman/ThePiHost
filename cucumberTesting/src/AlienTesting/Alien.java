@@ -9,8 +9,8 @@ public class Alien{
   public int y;
   public int width = 15;
   int height = 20;
-  int moveSpeed = 1;
-  boolean isDead = false;
+  public int moveSpeed = 1;
+  public boolean isDead = false;
 
   public AlienBomb bomb;
 
