@@ -22,7 +22,7 @@ User Accpetance Tests:
 
 1)
 Use case name
-    Launching N64 games\n
+    Launching N64 games
 Description
     Launching N64 games from main menu brings you to alternative menu to choose various games that can all be played.
 Pre-conditions
