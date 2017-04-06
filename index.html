@@ -1,76 +1,77 @@
 <!doctype html>
-<!--
-
--->
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8">
-	<meta name="description" content="CSCI-3308, Software Development Methods and Tools">
-	<title>CSCI-3308 | The Pi Host</title>
-	
-	<!-- stylesheets -->
+	<title>Untitled Document</title>
 	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<link href="css/mobile.less" rel="stylesheet" type="text/css">
-	
-	<!-- fullpage.js -->
-	<link rel="stylesheet" type="text/css" href="scripts/jquery.fullPage.css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript" src="scripts/jquery.fullPage.js"></script>
-	
-	<!-- fonts -->
-	
-	<!-- scripts -->
+	<link href="scripts/script.js" rel="stylesheet" type="text/javascript">
+	<link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="vendors/jquery.easings.min.js"></script>
+  <script type="text/javascript" src="jquery.fullPage.js"></script>
+  <script type="text/javascript">
+		$(document).ready(function() {
+    	$('#fullpage').fullpage();
+  	});
+  </script>
 
 </head>
+
 <body>
-	<div class="container">
-		<div id="content">
-		
-		<div id="fullpage">
-			<div class="section">Some section</div>
-			<div class="section">Some section</div>
-			<div class="section">Some section</div>
-			<div class="section">Some section</div>
-		</div>
-		
-			<h1>ThePiHost</h1>
-			<div class="game-directory-container">
-			<div class="overlay-container">
-					<img src="assets/game-example copy.png" class="game-directory-item"/>
-					<div class="hoverbox">
-						<div class="hovertext">
-							"GAME NAME GOES HERE"
-						</div>
-					</div>
-				</div>
-				<div class="overlay-container">
-					<img src="assets/game-example copy.png" class="game-directory-item"/>
-					<div class="hoverbox">
-						<div class="hovertext">
-							"GAME NAME GOES HERE"
-						</div>
-					</div>
-				</div>
-				<div class="overlay-container">
-					<img src="assets/game-example copy.png" class="game-directory-item"/>
-					<div class="hoverbox">
-						<div class="hovertext">
-							"GAME NAME GOES HERE"
-						</div>
-					</div>
-				</div>
-				<div class="overlay-container">
-					<img src="assets/game-example copy.png" class="game-directory-item"/>
-					<div class="hoverbox">
-						<div class="hovertext">
-							"GAME NAME GOES HERE"
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="download-link"><h1>DOWNLOAD</h1></div>
-		</div>
-		<div id="n64"><img src="assets/n64.svg"></div>
+<ul id="menu">
+	<li data-menuanchor="firstPage" class="active"><a href="#firstPage">First section</a></li>
+	<li data-menuanchor="secondPage"><a href="#secondPage">Second section</a></li>
+	<li data-menuanchor="3rdPage"><a href="#3rdPage">Third section</a></li>
+	<li data-menuanchor="4thpage"><a href="#4thpage">Fourth section</a></li>
+</ul>
+<div id="fullpage">
+
+	<div class="section active" id="section0">
+		<h1>Single Page Demo</h1>		
+		<img src="http://static.webpie.net/files/11/images/web68-logo-small.png" alt="web68" />
 	</div>
+	<div class="section" id="section1">
+	    <div class="slide active">
+			<div class="intro">
+				<h1>Create Sliders</h1>
+				<p>Not only vertical scrolling but also horizontal scrolling. With fullPage.js you will be able to add horizontal sliders in the most simple way ever.</p>				
+			</div>
+		</div>
+	    <div class="slide">
+			<div class="intro">
+				<img src="http://static.webpie.net/files/11/images/web68-logo-small.png" alt="web68" />
+				<h1>Simple</h1>
+				<p>Easy to use. Configurable and customizable.</p>
+			</div>
+		</div>
+	    <div class="slide">
+			<div class="intro">
+				<img src="http://static.webpie.net/files/11/images/web68-logo-small.png" alt="web68" />
+				<h1>Cool</h1>
+				<p>It just looks cool. Impress everybody with a simple and modern web design!</p>
+			</div>
+		</div>
+	    <div class="slide">
+			<div class="intro">
+				<img src="http://static.webpie.net/files/11/images/web68-logo-small.png" alt="web68" />
+				<h1>Compatible</h1>
+				<p>Working in modern and old browsers too! IE 8 users don't have the fault of using that horrible browser! Lets give them a chance to see your site in a proper way!</p>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section2">
+		<div class="intro">
+			<h1>Easy to use plugin</h1>
+			<p>HTML markup example to define 4 sections.</p>
+			<img src="http://static.webpie.net/files/11/images/web68-logo-small.png" alt="web68" />
+		</div>
+	</div>
+	<div class="section" id="section3">
+		<div class="intro">
+			<h1>Working On Tablets</h1>
+		</div>
+		<img src="http://static.webpie.net/files/11/images/web68-logo-small.png" alt="web68" />
+	</div>
+</div>
 </body>
 </html>
