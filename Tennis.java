@@ -29,8 +29,8 @@ public class Tennis extends Canvas implements Runnable {
   BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 
   //keep track of player score and computer score
-  int playerScore;
-  int compScore;
+  public int playerScore = 0;
+  public int compScore = 0;
 
   //is game running?
   static boolean gameRunning = false;
