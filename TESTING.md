@@ -1,4 +1,4 @@
-Who: Joshua Griffiths, Austin Griffith, Caroline Friedman, Galen Pogonchev
+Who: Joshua Griffiths, Austin Griffith, Caroline Friedman, Galen Pogoncheff
 
 Title: The Pi Host
 
