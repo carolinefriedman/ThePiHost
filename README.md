@@ -16,6 +16,9 @@
   Description: Short description of the project (help explain to us what you are doing)
   
   For our project this semester in CSCI 3308 Software Development class our group of four has decieded to move forward with creating a gaming host through a raspberry pi which will have many different games loaded onto it such as old nintendo 64 games, classic arcade games, and others of that sort that are hard to find in modern day and can be very expansive to buy and many times are even too old to work on a working game system. We are going to take all the loaded games on the raspberry pi and host them to a website making the raspberry pi more of a remote server that is always running so people can go online to our website and play such games with a usb controller on their own computer anywhere with an internet connection. 
+  
+Slight changes:
+    We are sticking with the same idea for the entire project but after testing and a few trial and errors we have realized hosting games via raspberry pi is not feasible so we have changed our game plan slightly. We are going to create an entire package program that will be downloaded from our website. We will be hosting the website for free via our raspberry pi and the website will have a download option to get all need files and directories to install and start playing games. Most of the process will be completed automated so once you download and unzip the files it will be ready to play.  
 
 
 ##Vision statement
@@ -31,7 +34,7 @@
 ##Risks
   Risks: to project completion 
   
-  When deciding to move forward with our project is was pretty easy to identify the risks and hardships we will have to overcome in order to have a sucessful project. While we are working with a group of four and everyone brings to the table something a little different there are still many things we as a team do not know how to do such as web hosting, creating a working server (Raspberry Pi server), creating scripts to run the raspberry pi and boot games onto it. We also as a team have never messed around with a raspberry pi so learning the python language and scripts necessary to boot it, run it and then run our game program which will be a mix of Java and C++ will all be risks that need to be accounted for.  
+  When deciding to move forward with our project is was pretty easy to identify the risks and hardships we will have to overcome in order to have a sucessful project. While we are working with a group of four and everyone brings to the table something a little different there are still many things we as a team do not know how to do such as web hosting, creating a working server (Raspberry Pi server), creating scripts to run the raspberry pi and boot games onto it. We also as a team have never messed around with a raspberry pi so learning the python language and scripts necessary to boot it, run it and then run our game program which will be a mix of Java and C++ will all be risks that need to be accounted for. We also will have to learn the certain and most proper coding lannguages needed to created our desired games, pong and SpaceDenfders.   
   
 ##Mitigation 
   Mitigation strategy for dealing with the risk  
