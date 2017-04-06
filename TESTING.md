@@ -4,7 +4,7 @@ Title: The Pi Host
 
 Vision: Bringing the retro 90's games back to life for everyone to play anywhere anytime because the best games are free.
 
-Automated Tests:
+Screenshots of Automated Test Results for SpaceDefender game:
 
 https://cloud.githubusercontent.com/assets/24575285/24729030/a608392e-1a19-11e7-8346-00dd8deb15e5.png
 
@@ -17,6 +17,16 @@ https://cloud.githubusercontent.com/assets/24575285/24729044/ac85a91c-1a19-11e7-
 https://cloud.githubusercontent.com/assets/24575285/24729050/af6ae9c6-1a19-11e7-990a-befcc7ec7310.png
 
 https://cloud.githubusercontent.com/assets/24575285/24729053/b1a20224-1a19-11e7-9023-d0ec1b86c21b.png
+
+Screenshots of Automated Test Results for SpaceDefender game:
+
+https://github.com/carolinefriedman/ThePiHost/blob/AutomatedTesting/tennisTestingScreenshots/TennisClassTesting_Screenshot.png?raw=true
+
+https://github.com/carolinefriedman/ThePiHost/blob/AutomatedTesting/tennisTestingScreenshots/PlayerPaddleClassTesting_Screenshot.png?raw=true
+
+https://github.com/carolinefriedman/ThePiHost/blob/AutomatedTesting/tennisTestingScreenshots/ComputerPassleClassTesting_Screenshot.png?raw=true
+
+https://github.com/carolinefriedman/ThePiHost/blob/AutomatedTesting/tennisTestingScreenshots/BallClassTesting_Screenshot.png?raw=true
 
 User Accpetance Tests :
 
