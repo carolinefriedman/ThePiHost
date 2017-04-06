@@ -4,6 +4,7 @@ Title: The Pi Host
 
 Vision: Bringing the retro 90's games back to life for everyone to play anywhere anytime because the best games are free.
 
+
 Screenshots of Automated Test Results for SpaceDefender game:
 
 https://cloud.githubusercontent.com/assets/24575285/24729030/a608392e-1a19-11e7-8346-00dd8deb15e5.png
@@ -27,6 +28,12 @@ https://github.com/carolinefriedman/ThePiHost/blob/AutomatedTesting/tennisTestin
 https://github.com/carolinefriedman/ThePiHost/blob/AutomatedTesting/tennisTestingScreenshots/ComputerPassleClassTesting_Screenshot.png?raw=true
 
 https://github.com/carolinefriedman/ThePiHost/blob/AutomatedTesting/tennisTestingScreenshots/BallClassTesting_Screenshot.png?raw=true
+
+
+Tool used for Automated Testing: Cucumber - JVM (https://cucumber.io/)
+    
+  The automated tests we wrote are to be run with the cucumber jvm framework.  Feature files for these tests can be found in the 'AutomatedTesting' branch.  Each feature is to be run as a cucumber feature to initiate the automated testing.  The feature files that test the classes and methods of the spaceDefenders game can be located in AutomatedTesting/cucumberTesting/src/{class_name}.  The feature files that test the classes and methods of the tennis game can be located in AutomatedTesting/AutomatedTennisTesting/src/{class_name}.  For more information about running the tests, contact Galen.
+
 
 User Accpetance Tests :
 
