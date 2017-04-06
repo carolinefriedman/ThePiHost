@@ -48,23 +48,62 @@ Post-conditions:
 2)
 Use case name:
     SpaceDefender game testing.
+    
 Description:
     Testing that game functionality and graphics work.
+    
 Pre-conditions:
     User has game downloaded locally.
+    
 Test steps:
     1. Launch game (maually or through main menu).
     2. click on game screen.
     3. Press space-bar to play.
     4. Play Game (directions provided during game startup).
+    
 Expected result:
     User should be able to play game, without any glitches
+    
 Actual result:
     User is able to play game.  Although, slight glitches in "level-up" system.
+    
 Status (Pass/Fail):
     Pass.
+    
 Notes:
     We must find the bugs that give rise to the "level-up" glitches.
+    
+Post-conditions:
+    N/A.
+    
+ 3)
+Use case name:
+    SpaceDefender game testing.
+    
+Description:
+    Testing that game functionality and graphics work.
+    
+Pre-conditions:
+    User has game downloaded locally.
+    
+Test steps:
+    1. Launch game (maually or through main menu).
+    2. click on game screen.
+    3. Press space-bar to play.
+    4. Play Game (directions provided during game startup).
+    
+Expected result:
+    User should be able to play game, without any glitches.
+    
+Actual result:
+    User is able to play game.  Although, slight glitches in "level-up" system.
+    
+Status (Pass/Fail):
+    Pass.
+    
+Notes:
+    We must find the bugs that give rise to the "level-up" glitches.
+    
 Post-conditions:
     N/A.
     
@@ -72,23 +111,31 @@ Post-conditions:
 3)
 Use case name:
     Emulator testing and game functionality.
+    
 Description:
-    Testing that the emulator successfully downloads and installs on uesr computer.  Testing that all provided game file are playable.
+    Testing that the emulator successfully downloads and installs on user computer.  Testing that all provided game files are playable.
+    
 Pre-conditions:
     User has successfully followed directions to install emulator before launching it from main menu system.
+    
 Test steps:
     1. User downloads emulator locally.
     2. Follow instructions provided to install emulator and associated game files.
     3. Boot emulator and follows menu screen to desired game.
     4. Plays game of choice.
+    
 Expected result:
     User should be able play games on emulator without any issues.
+    
 Actual result:
     User is able play games on emulator without any issues.
-    Emulator and game files not let downloadable from website.
+    Emulator and game files not yet downloadable from website.
+    
 Status (Pass/Fail):
     Pass.
+    
 Notes:
     N/A.
+    
 Post-conditions:
     N/A.
