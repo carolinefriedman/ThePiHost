@@ -22,74 +22,73 @@ User Accpetance Tests:
 
 1)
 Use case name:
-    Launching N64 games.
+    Verify website functionality.
 Description:
-    Launching N64 games from main menu brings you to alternative menu to choose various games that can all be played.
+    Testing the home website for ThePiHost.
 Pre-conditions:
     Rasberry Pi is working and hosting.
 Test steps:
-    1. Start Rasberry Pi
-    2. Provide valid user name
-    3. Provide valid password
-    4. Click login button
+    1. Go to The Pi Host url.
+    2. Navigate through provided pages on website.
+    3. Click Download link to get package.
 Expected result:
-    User should be able to login.
+    User should be able to successfully navigate through website pages of wesite and download and open provides package.
 Actual result:
-    User is navigated to dashboard with successful login.
+    User is able to navigate through website locally. Although, download link is not active.
 Status (Pass/Fail):
-    Pass.
+    Fail.
 Notes:
-    N/A.
+    Need to fix hosting from raspberry pi.
+    Download link will be active once newest games are finished.
 Post-conditions:
-    User is validated with database and successfully signed into their account.
-    The account session details are logged in database.
+    User obtains a copy of game package.
+    After download link is click, user is directed to installation instructions on website.
    
    
 2)
 Use case name:
-    Verify login with valid user name and password.
+    SpaceDefender game testing.
 Description:
-    Test the Google login page.
+    Testing that game functionality and graphics work.
 Pre-conditions:
-    User has valid user name and password.
+    User has game downloaded locally.
 Test steps:
-    1. Navigate to login page
-    2. Provide valid user name
-    3. Provide valid password
-    4. Click login button
+    1. Launch game (maually or through main menu).
+    2. click on game screen.
+    3. Press space-bar to play.
+    4. Play Game (directions provided during game startup).
 Expected result:
-    User should be able to login.
+    User should be able to play game, without any glitches
 Actual result:
-    User is navigated to dashboard with successful login.
+    User is able to play game.  Although, slight glitches in "level-up" system.
 Status (Pass/Fail):
     Pass.
 Notes:
-    N/A.
+    We must find the bugs that give rise to the "level-up" glitches.
 Post-conditions:
-    User is validated with database and successfully signed into their account.
-    The account session details are logged in database.
+    N/A.
     
     
 3)
 Use case name:
-    Verify login with valid user name and password.
+    Emulator testing and game functionality.
 Description:
-    Test the Google login page.
+    Testing that the emulator successfully downloads and installs on uesr computer.  Testing that all provided game file are playable.
 Pre-conditions:
-    User has valid user name and password.
+    User has successfully followed directions to install emulator before launching it from main menu system.
 Test steps:
-    1. Navigate to login page.
-    2. Provide valid user name.
-    3. Provide valid password.
-    4. Click login button.
+    1. User downloads emulator locally.
+    2. Follow instructions provided to install emulator and associated game files.
+    3. Boot emulator and follows menu screen to desired game.
+    4. Plays game of choice.
 Expected result:
-    User should be able to login.
+    User should be able play games on emulator without any issues.
 Actual result:
-    User is navigated to dashboard with successful login.
+    User is able play games on emulator without any issues.
+    Emulator and game files not let downloadable from website.
 Status (Pass/Fail):
     Pass.
 Notes:
     N/A.
 Post-conditions:
-    User is validated with database and successfully signed into their account.
-    The account session details are logged in database.
+    N/A.
