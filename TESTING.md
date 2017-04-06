@@ -23,23 +23,31 @@ User Accpetance Tests:
 1)
 Use case name:
     Verify website functionality.
+    
 Description:
     Testing the home website for ThePiHost.
+    
 Pre-conditions:
     Rasberry Pi is working and hosting.
+    
 Test steps:
     1. Go to The Pi Host url.
     2. Navigate through provided pages on website.
     3. Click Download link to get package.
+    
 Expected result:
     User should be able to successfully navigate through website pages of wesite and download and open provides package.
+    
 Actual result:
     User is able to navigate through website locally. Although, download link is not active.
+    
 Status (Pass/Fail):
     Fail.
+    
 Notes:
     Need to fix hosting from raspberry pi.
     Download link will be active once newest games are finished.
+    
 Post-conditions:
     User obtains a copy of game package.
     After download link is click, user is directed to installation instructions on website.
@@ -56,7 +64,7 @@ Pre-conditions:
     User has game downloaded locally.
     
 Test steps:
-    1. Launch game (maually or through main menu).
+    1. Launch game (manually or through main menu).
     2. click on game screen.
     3. Press space-bar to play.
     4. Play Game (directions provided during game startup).
@@ -76,9 +84,9 @@ Notes:
 Post-conditions:
     N/A.
     
- 3)
+3)
 Use case name:
-    SpaceDefender game testing.
+    tennis game testing.
     
 Description:
     Testing that game functionality and graphics work.
@@ -87,28 +95,27 @@ Pre-conditions:
     User has game downloaded locally.
     
 Test steps:
-    1. Launch game (maually or through main menu).
+    1. Launch game (manually or through main menu).
     2. click on game screen.
-    3. Press space-bar to play.
-    4. Play Game (directions provided during game startup).
+    3. Play Game (directions provided during game startup).
     
 Expected result:
     User should be able to play game, without any glitches.
     
 Actual result:
-    User is able to play game.  Although, slight glitches in "level-up" system.
+    User is able to play game.
     
 Status (Pass/Fail):
     Pass.
     
 Notes:
-    We must find the bugs that give rise to the "level-up" glitches.
+    N/A.
     
 Post-conditions:
     N/A.
     
     
-3)
+4)
 Use case name:
     Emulator testing and game functionality.
     
