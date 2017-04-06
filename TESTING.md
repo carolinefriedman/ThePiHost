@@ -18,131 +18,133 @@ https://cloud.githubusercontent.com/assets/24575285/24729050/af6ae9c6-1a19-11e7-
 
 https://cloud.githubusercontent.com/assets/24575285/24729053/b1a20224-1a19-11e7-9023-d0ec1b86c21b.png
 
-User Accpetance Tests:
+User Accpetance Tests :
 
 1)
-Use case name:
-    Verify website functionality.
+Use case name :
+    Verify website functionality and hosted files are able to be downloaded with no error.
     
-Description:
+Description :
     Testing the home website for ThePiHost.
     
-Pre-conditions:
-    Rasberry Pi is working and hosting.
+Pre-conditions :
+    Rasberry Pi is working and hosting files sucessfully.
     
-Test steps:
+Test steps :
     1. Go to The Pi Host url.
-    2. Navigate through provided pages on website.
+    2. Navigate through provided pages on website to download page.
     3. Click Download link to get package.
+    4. Sucessfully see zip file in downloads folder on user machine.
     
-Expected result:
-    User should be able to successfully navigate through website pages of wesite and download and open provides package.
+Expected result :
+    User should be able to successfully navigate through website pages of wesite and download and open provided package.
     
-Actual result:
+Actual result :
     User is able to navigate through website locally. Although, download link is not active.
     
-Status (Pass/Fail):
+Status (Pass/Fail) :
     Fail.
     
 Notes:
     Need to fix hosting from raspberry pi.
     Download link will be active once newest games are finished.
     
-Post-conditions:
+Post-conditions :
     User obtains a copy of game package.
     After download link is click, user is directed to installation instructions on website.
    
    
 2)
-Use case name:
+Use case name :
     SpaceDefender game testing.
     
-Description:
-    Testing that game functionality and graphics work.
+Description :
+    Testing that game functionality is fully opperational and that all graphics work without glitching or errors.
     
-Pre-conditions:
+Pre-conditions :
     User has game downloaded locally.
     
-Test steps:
+Test steps :
     1. Launch game (manually or through main menu).
     2. click on game screen.
     3. Press space-bar to play.
     4. Play Game (directions provided during game startup).
     
-Expected result:
+Expected result :
     User should be able to play game, without any glitches
     
-Actual result:
+Actual result :
     User is able to play game.  Although, slight glitches in "level-up" system.
     
-Status (Pass/Fail):
+Status (Pass/Fail) :
     Pass.
     
-Notes:
+Notes :
     We must find the bugs that give rise to the "level-up" glitches.
     
-Post-conditions:
+Post-conditions :
     N/A.
     
 3)
-Use case name:
+Use case name :
     tennis game testing.
     
-Description:
-    Testing that game functionality and graphics work.
+Description :
+    Testing that game functionality is fully opperational and that all graphics work without glitching or errors.
     
-Pre-conditions:
-    User has game downloaded locally.
+Pre-conditions :
+    User has game downloaded locally via the complete download from website as a zip file.
     
-Test steps:
+Test steps :
     1. Launch game (manually or through main menu).
     2. click on game screen.
     3. Play Game (directions provided during game startup).
     
-Expected result:
+Expected result :
     User should be able to play game, without any glitches.
     
-Actual result:
+Actual result :
     User is able to play game.
     
-Status (Pass/Fail):
+Status (Pass/Fail) :
     Pass.
     
 Notes:
     N/A.
     
-Post-conditions:
+Post-conditions :
     N/A.
     
     
 4)
-Use case name:
+Use case name :
     Emulator testing and game functionality.
     
-Description:
-    Testing that the emulator successfully downloads and installs on user computer.  Testing that all provided game files are playable.
+Description :
+    Testing that the emulator successfully downloads and installs on user computer with provided directions from website.  Testing that all provided game files and directories are playable with no faults.
     
-Pre-conditions:
+Pre-conditions :
     User has successfully followed directions to install emulator before launching it from main menu system.
     
-Test steps:
+Test steps :
     1. User downloads emulator locally.
     2. Follow instructions provided to install emulator and associated game files.
     3. Boot emulator and follows menu screen to desired game.
     4. Plays game of choice.
     
 Expected result:
-    User should be able play games on emulator without any issues.
+    User should be able play any of the games included in the download on emulator without any issues.
     
-Actual result:
+Actual result :
     User is able play games on emulator without any issues.
     Emulator and game files not yet downloadable from website.
+    Directions have not yet been provided on website.
     
-Status (Pass/Fail):
+Status (Pass/Fail) :
     Pass.
     
-Notes:
+Notes :
     N/A.
     
-Post-conditions:
+Post-conditions :
     N/A.
