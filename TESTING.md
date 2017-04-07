@@ -32,7 +32,7 @@ https://github.com/carolinefriedman/ThePiHost/blob/AutomatedTesting/tennisTestin
 
 Tool used for Automated Testing: Cucumber - JVM (https://cucumber.io/)
     
-  The automated tests we wrote are to be run with the cucumber jvm framework.  Feature files for these tests can be found in the 'AutomatedTesting' branch.  Each feature is to be run as a cucumber feature to initiate the automated testing.  The feature files that test the classes and methods of the spaceDefenders game can be located in AutomatedTesting/cucumberTesting/src/{class_name}.  The feature files that test the classes and methods of the tennis game can be located in AutomatedTesting/AutomatedTennisTesting/src/{class_name}.  For more information about running the tests, contact Galen.
+  The automated tests we wrote are to be run with the Cucumber JVM framework.  Feature files for these tests can be found in the 'AutomatedTesting' branch.  Each feature is to be run as a cucumber feature to initiate the automated testing.  The feature files that test the classes and methods of the spaceDefenders game can be located in AutomatedTesting/cucumberTesting/src/{class_name}.  The feature files that test the classes and methods of the tennis game can be located in AutomatedTesting/AutomatedTennisTesting/src/{class_name}.  For more information about running the tests, contact Galen.
 
 
 User Accpetance Tests :
@@ -68,7 +68,7 @@ Notes:
     
 Post-conditions :
     User obtains a copy of game package.
-    After download link is click, user is directed to installation instructions on website.
+    After download link is clicked, user is directed to installation instructions on website.
    
    
 2)
@@ -104,7 +104,7 @@ Post-conditions :
     
 3)
 Use case name :
-    tennis game testing.
+    Tennis game testing.
     
 Description :
     Testing that game functionality is fully opperational and that all graphics work without glitching or errors.
