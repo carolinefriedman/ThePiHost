@@ -16,6 +16,7 @@ public class Bullets{
   int moveSpeed;
   Rectangle boundingBox;
   boolean collision = false;
+  public int numShots = 0;
 
   public Bullets(Shooter shooter){
     boundingBox = new Rectangle(x, y, width, height);

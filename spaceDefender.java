@@ -31,7 +31,7 @@ public class spaceDefender extends Canvas implements Runnable{
 
   public Alien[][] alienMatrix = new Alien[3][10];
 
-  public static int cnt;
+  public static int timeCount;
   static boolean entered = false;
   Random random;
 
@@ -95,8 +95,8 @@ public class spaceDefender extends Canvas implements Runnable{
 
   public void tick(){
     player.tick(this);
-  //  bullet.tick(this);
-    if (cnt != 0 && cnt % dropTimer == 0){
+
+    if (timeCount != 0 && timeCount % dropTimer == 0){
       int x = random.nextInt(3);
       int y = random.nextInt(10);
       this.alienMatrix[x][y].bomb.isShooting = true;
@@ -105,10 +105,17 @@ public class spaceDefender extends Canvas implements Runnable{
     for (int i = 0; i < 3; i ++){
       for (int j = 0; j < 10; j++){
         alienMatrix[i][j].tick(this);
-        if (this.cnt != 0 && (this.cnt % 500) == 0){
-          alienMatrix[i][j].y += 10;
+      }
+    }
+
+    if (this.player.bullet.numShots != 0 && (this.player.bullet.numShots) % 6 == 0){
+      for (int i = 0; i < 3; i ++){
+        for (int j = 0; j < 10; j++){
+          alienMatrix[i][j].y += 20;
+          //if (this.timeCount != 0 && (this.timeCount % 500) == 0){
         }
       }
+      this.player.bullet.numShots += 1;
     }
 
   }
@@ -125,7 +132,6 @@ public class spaceDefender extends Canvas implements Runnable{
     graphics.drawString("   Shoot: Space Bar", WIDTH/2 - 100, HEIGHT/2 + 45);
     graphics.dispose();
     buffer.show();
-    //while(this.entered != true);
   }
 
   public void GameOver(Graphics graphics, BufferStrategy buffer){
@@ -134,6 +140,7 @@ public class spaceDefender extends Canvas implements Runnable{
     graphics.setColor(Color.GREEN);
     graphics.drawString("GAME OVER", WIDTH/2 - 50, HEIGHT/2 - 30);
     graphics.drawString("Total Score: " + player.bullet.playerScore, WIDTH/2 - 60, HEIGHT/2);
+    graphics.drawString("You Survived " + this.level + " levels", WIDTH/2 - 70, HEIGHT/2 + 30);
     graphics.dispose();
     buffer.show();
     gameRunning = false;
@@ -181,7 +188,8 @@ public class spaceDefender extends Canvas implements Runnable{
             alienMatrix[i][j].isDead = false;
             alienMatrix[i][j].x = 20 + (25*j);
             alienMatrix[i][j].y = 25 * i;
-            alienMatrix[i][j].moveSpeed += 1;
+            alienMatrix[i][j].moveSpeed = 2;
+            // TODO: check is droptimer - x is negative
             dropTimer -= 20;
             allDead = false;
           }
@@ -190,11 +198,6 @@ public class spaceDefender extends Canvas implements Runnable{
 
     }
 
-/*
-    if(this.cnt == 10){
-      player.health = 0;
-    }
-*/
     if (player.health < 0){
       GameOver(graphics, buffer);
     }
@@ -211,7 +214,7 @@ public class spaceDefender extends Canvas implements Runnable{
       @Override
       public void actionPerformed(ActionEvent event) {
         if (entered)
-          cnt += 1;
+          timeCount += 1;
       }
     };
     Timer timer = new Timer(1, actListner);
