@@ -30,7 +30,8 @@ public class PlayerPaddle{
     if(moveUp && y > 0){
       y -= paddleSpeed;
     }
-    if(moveDown && y < game.getHeight() - height){
+
+    if(moveDown && y < game.HEIGHT - this.height){
       y += paddleSpeed;
     }
   }
@@ -40,4 +41,3 @@ public class PlayerPaddle{
     graphics.fillRect(x, y, width, height);
   }
 }
-

@@ -10,11 +10,11 @@ public class GameIO implements KeyListener{
   public void keyPressed(KeyEvent event){
     int keyCode = event.getKeyCode();
 
-    if(keyCode == KeyEvent.VK_W){
+    if(keyCode == KeyEvent.VK_UP){
         Tennis.player.moveUp = true;
     }
 
-    if(keyCode == KeyEvent.VK_S){
+    if(keyCode == KeyEvent.VK_DOWN){
         Tennis.player.moveDown = true;
     }
 
@@ -23,11 +23,11 @@ public class GameIO implements KeyListener{
   public void keyReleased(KeyEvent event){
     int keyCode = event.getKeyCode();
 
-    if(keyCode == KeyEvent.VK_W){
+    if(keyCode == KeyEvent.VK_UP){
         Tennis.player.moveUp = false;
     }
 
-    if(keyCode == KeyEvent.VK_S){
+    if(keyCode == KeyEvent.VK_DOWN){
         Tennis.player.moveDown = false;
     }
   }
