@@ -34,6 +34,7 @@ public class Tennis extends Canvas implements Runnable {
 
   //is game running?
   static boolean gameRunning = false;
+  static boolean entered = false;
 
   public void run(){
     while (gameRunning){
@@ -93,6 +94,20 @@ public class Tennis extends Canvas implements Runnable {
     ball.tick(this);
   }
 
+  public void gameEntry(Graphics graphics, BufferStrategy buffer){
+    graphics.setColor(Color.GREEN);
+    graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    graphics.setColor(Color.GREEN);
+    graphics.drawString("Press Space to start", WIDTH/2 - 100, HEIGHT/2 - 30);
+    graphics.drawString("Controls:", WIDTH/2 - 100, HEIGHT/2 + 0);
+    graphics.drawString("   Move Paddle Up: Up Arrow", WIDTH/2 - 100, HEIGHT/2 + 15);
+    graphics.drawString("   Move Paddle Down: Down Arrow", WIDTH/2 - 100, HEIGHT/2 + 30);
+    // TODO: add how to score points and how to lose
+    graphics.drawString("Score points by ", WIDTH/2 - 100, HEIGHT/2 + 45);
+    graphics.dispose();
+    buffer.show();
+  }
+
   public void render(){
     //BufferStrategy is the way in which it is Buffered
     BufferStrategy buffStrat = getBufferStrategy();
@@ -102,19 +117,26 @@ public class Tennis extends Canvas implements Runnable {
     }
 
     Graphics graphics = buffStrat.getDrawGraphics();
-    graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-    graphics.setColor(Color.GREEN);
-    // print scores
-    graphics.drawString("Player: " + playerScore, 5, 15);
-    graphics.drawString("Computer: " + compScore, getWidth() - 87, 15);
 
-  //call render for player and ball instances here
-    player.render(graphics);
-    compplayer.render(graphics);
-    ball.render(graphics);
+    if (!this.entered){
+      gameEntry(graphics, buffStrat);
+    }
 
-    graphics.dispose();
-    buffStrat.show();
+    else{
+      graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+      graphics.setColor(Color.GREEN);
+      // print scores
+      graphics.drawString("Player: " + playerScore, 5, 15);
+      graphics.drawString("Computer: " + compScore, getWidth() - 87, 15);
+
+    //call render for player and ball instances here
+      player.render(graphics);
+      compplayer.render(graphics);
+      ball.render(graphics);
+
+      graphics.dispose();
+      buffStrat.show();
+    }
   }
 
   public static void main(String[] args){

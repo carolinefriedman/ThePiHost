@@ -11,6 +11,8 @@ public class Ball{
   int velocityX;
   int velocityY;
 
+  int intersectionHits = 0;
+
   Rectangle boundingBox;
 
   public Ball(int x, int y){
@@ -55,7 +57,19 @@ public class Ball{
   private void paddleCollide(Tennis game){
     if(boundingBox.intersects(game.player.boundingBox)){
       velocityX = speed;
+
+      /*
+       * Each collision increases intersectionHits by three
+       * due to rendering of collision happening multiple times.
+       * Therefore, if intersectionHits modulo 3 == 0, "one"
+       * collision occured and player score is increased by one
+       */
+
+      this.intersectionHits += 1;
+      if (this.intersectionHits % 3 == 0)
+        game.playerScore += 1;
     }
+
     else if (boundingBox.intersects(game.compplayer.boundingBox)){
       velocityX = -speed;
     }

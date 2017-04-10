@@ -18,6 +18,10 @@ public class GameIO implements KeyListener{
         Tennis.player.moveDown = true;
     }
 
+    if(keyCode == KeyEvent.VK_SPACE){
+        Tennis.entered = true;
+    }
+
   }
 
   public void keyReleased(KeyEvent event){
@@ -30,6 +34,7 @@ public class GameIO implements KeyListener{
     if(keyCode == KeyEvent.VK_DOWN){
         Tennis.player.moveDown = false;
     }
+
   }
 
   public void keyTyped(KeyEvent event){
