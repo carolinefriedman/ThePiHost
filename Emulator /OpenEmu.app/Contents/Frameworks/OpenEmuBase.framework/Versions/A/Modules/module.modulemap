@@ -1,0 +1,6 @@
+framework module OpenEmuBase {
+  umbrella header "OpenEmuBase.h"
+
+  export *
+  module * { export * }
+}
