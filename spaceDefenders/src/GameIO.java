@@ -22,6 +22,8 @@ public class GameIO implements KeyListener{
 
     if (key == KeyEvent.VK_SPACE){
       spaceDefender.player.bullet.isShooting = true;
+      spaceDefender.player.bullet.numShots += 1;
+      spaceDefender.entered = true;
     }
 /*
     if (key == KeyEvent.VK_B){

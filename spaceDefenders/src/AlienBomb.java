@@ -30,9 +30,16 @@ public class AlienBomb{
   //    this.x = shooter.x;
 
 //    if (isShooting && (inPlay == true)){
+
+    //if (game.cnt != 0 && game.cnt % 20 == 0){
+    //  this.isShooting = true;
+    //}
+    if(!isShooting){
+      y = alien.y;
+    }
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
 
-    if (y > game.HEIGHT || collision == true){
+    if (y > game.player.y){
       x = alien.x + (alien.width / 2);
       y = alien.y;
       isShooting = false;
@@ -42,6 +49,7 @@ public class AlienBomb{
     if(isShooting){
       y += bombSpeed;
     }
+
     else{
       x = alien.x + (alien.width / 2);
     }
@@ -52,8 +60,12 @@ public class AlienBomb{
 
   private void collide(spaceDefender game){
     if(boundingBox.intersects(game.player.boundingBox)){
-      game.player.health -= 10;
       collision = true;
+    }
+
+    if (collision == true){
+      game.player.health -= 1;
+      collision = false;
     }
   }
 
