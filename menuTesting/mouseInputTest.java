@@ -9,6 +9,7 @@ public class mouseInputTest implements MouseListener{
   public void mousePressed(MouseEvent e){
     int mouseX = e.getX();
     int mouseY = e.getY();
+    System.out.print(mouseX);
     //play button
     if((mouseY >= 85) && (mouseY <= 135)){
         //pressed play button
@@ -33,4 +34,3 @@ public class mouseInputTest implements MouseListener{
     public void mouseExited(MouseEvent e){
     }
 }
-
