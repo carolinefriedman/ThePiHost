@@ -30,6 +30,7 @@ public class Tennis extends Canvas implements Runnable {
 
   //keep track of player score and computer score
   public int playerScore = 0;
+  public int pScoreTracker = 0;
   public int compScore = 0;
 
   //is game running?
@@ -98,14 +99,27 @@ public class Tennis extends Canvas implements Runnable {
     graphics.setColor(Color.GREEN);
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
     graphics.setColor(Color.GREEN);
-    graphics.drawString("Press Space to start", WIDTH/2 - 100, HEIGHT/2 - 30);
-    graphics.drawString("Controls:", WIDTH/2 - 100, HEIGHT/2 + 0);
-    graphics.drawString("   Move Paddle Up: Up Arrow", WIDTH/2 - 100, HEIGHT/2 + 15);
-    graphics.drawString("   Move Paddle Down: Down Arrow", WIDTH/2 - 100, HEIGHT/2 + 30);
-    // TODO: add how to score points and how to lose
-    graphics.drawString("Score points by ", WIDTH/2 - 100, HEIGHT/2 + 45);
+    graphics.drawString("Welcome to Tennis!", WIDTH/2 - 200, HEIGHT/2 - 150);
+    graphics.drawString("Score points by hitting the ball with your paddle (right paddle).", WIDTH/2 - 200, HEIGHT/2 - 75);
+    graphics.drawString("Dont miss! Otherwise the computer scores a point.", WIDTH/2 - 200, HEIGHT/2 - 60);
+    graphics.drawString("See how many points you can score before the computer scores 10 points", WIDTH/2 - 200, HEIGHT/2 - 45);
+    graphics.drawString("Controls:", WIDTH/2 - 200, HEIGHT/2 + 25);
+    graphics.drawString("\t\t\tMove Paddle Up: Up Arrow", WIDTH/2 - 200, HEIGHT/2 + 50);
+    graphics.drawString("\t\t\tMove Paddle Down: Down Arrow", WIDTH/2 - 200, HEIGHT/2 + 75);
+    graphics.drawString("CLICK ON SCREEN AND THEN PRESS THE SPACEBAR TO PLAY", WIDTH/2 - 200, HEIGHT/2 + 150);
     graphics.dispose();
     buffer.show();
+  }
+
+  public void GameOver(Graphics graphics, BufferStrategy buffer){
+    graphics.setColor(Color.GREEN);
+    graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+    graphics.setColor(Color.GREEN);
+    graphics.drawString("GAME OVER", WIDTH/2 - 50, HEIGHT/2 - 30);
+    graphics.drawString("Total Score: " + playerScore, WIDTH/2 - 50, HEIGHT/2);
+    graphics.dispose();
+    buffer.show();
+    gameRunning = false;
   }
 
   public void render(){
@@ -133,10 +147,21 @@ public class Tennis extends Canvas implements Runnable {
       player.render(graphics);
       compplayer.render(graphics);
       ball.render(graphics);
-
-      graphics.dispose();
-      buffStrat.show();
     }
+
+    if (this.pScoreTracker % 4 == 0 && this.pScoreTracker > 0){
+      ball.speed += 1;
+      this.compplayer.paddleSpeed += 1;
+      this.player.paddleSpeed += 1;
+      this.pScoreTracker = 0;
+    }
+
+    if (this.compScore >= 10){
+      GameOver(graphics, buffStrat);
+    }
+
+    graphics.dispose();
+    buffStrat.show();
   }
 
   public static void main(String[] args){

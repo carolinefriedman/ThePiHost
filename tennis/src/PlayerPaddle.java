@@ -8,7 +8,7 @@ public class PlayerPaddle{
   //size of paddles
   public final int width = 7;
   public final int height = 80;
-  public final int paddleSpeed = 3;
+  public int paddleSpeed = 3;
 
   //for making a hitbox for paddle
   public Rectangle boundingBox;

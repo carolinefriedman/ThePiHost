@@ -68,6 +68,7 @@ public class Ball{
       this.intersectionHits += 1;
       if (this.intersectionHits % 3 == 0 && this.intersectionHits != 0){
         game.playerScore += 1;
+        game.pScoreTracker += 1;
         this.intersectionHits = 0;
       }
     }
