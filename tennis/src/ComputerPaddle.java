@@ -3,18 +3,18 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 public class ComputerPaddle{
-  int x;
-  int y;
+  public int x;
+  public int y;
   //size of paddles
-  int width = 5;
-  int height = 40;
+  public final int width = 7;
+  public final int height = 80;
 
-  int paddleSpeed = 3;
+  public int paddleSpeed = 3;
 
   Rectangle boundingBox;
 
-  boolean goingUp = false;
-  boolean goingDown = false;
+  public boolean goingUp = false;
+  public boolean goingDown = false;
 
   public ComputerPaddle(int x, int y){
     this.x = x;

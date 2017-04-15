@@ -3,15 +3,15 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 public class Ball{
-  int x;
-  int y;
-  int size = 10;
-  int speed = 2;
+  public int x;
+  public int y;
+  public int size = 13;
+  public int speed = 2;
 
-  int velocityX;
-  int velocityY;
+  public int velocityX;
+  public int velocityY;
 
-  int intersectionHits = 0;
+  private int intersectionHits = 0;
 
   Rectangle boundingBox;
 
@@ -66,8 +66,10 @@ public class Ball{
        */
 
       this.intersectionHits += 1;
-      if (this.intersectionHits % 3 == 0)
+      if (this.intersectionHits % 3 == 0 && this.intersectionHits != 0){
         game.playerScore += 1;
+        this.intersectionHits = 0;
+      }
     }
 
     else if (boundingBox.intersects(game.compplayer.boundingBox)){

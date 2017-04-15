@@ -19,8 +19,8 @@ public class Tennis extends Canvas implements Runnable {
   public static GameIO io;
 
   //window sizing
-  public final int WIDTH = 400;
-  public final int HEIGHT = 225;
+  public final int WIDTH = 1000;
+  public final int HEIGHT = 562;
 
   //condense w and h into one var
   public final Dimension gameSize = new Dimension(WIDTH, HEIGHT);
