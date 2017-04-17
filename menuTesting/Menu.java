@@ -19,6 +19,7 @@ public class Menu extends JFrame{
 		menuImage = new ImageIcon(getClass().getResource("PiHostMenuCopy.jpg"));
 		menuLabel = new JLabel(menuImage);
 		add(menuLabel);
+		addMouseListener(new mouseInputTest());
 	}
 	
 	public static void main(String args[]){
@@ -31,8 +32,8 @@ public class Menu extends JFrame{
 		menu.setMinimumSize(menu.menuSize);
 		menu.setMaximumSize(menu.menuSize);
 		menu.setPreferredSize(menu.menuSize);
-	    menu.setLocationRelativeTo(null);
-	    menu.setVisible(true);
+	    	menu.setLocationRelativeTo(null);
+	    	menu.setVisible(true);
 		menu.pack();
 		menu.setTitle("The Pi Host");
 	}
