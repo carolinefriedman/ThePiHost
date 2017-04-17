@@ -3,12 +3,12 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 public class Alien{
-  int x;
-  int y;
-  int width = 15;
-  int height = 20;
-  int moveSpeed = 1;
-  boolean isDead = false;
+  public int x;
+  public int y;
+  public final int width = 15;
+  public final int height = 20;
+  public int moveSpeed = 1;
+  public boolean isDead = false;
 
   AlienBomb bomb;
 
@@ -21,10 +21,6 @@ public class Alien{
     boundingBox = new Rectangle(x, y, width, height);
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
     bomb = new AlienBomb(this);
-
-
-  //  boundingBox = new Rectangle(x, y, width, height);
-    //boundingBox.setBounds(this.x, this.y, this.width, this.height);
   }
 
   public void tick(spaceDefender game){
@@ -38,11 +34,6 @@ public class Alien{
       moveSpeed = -moveSpeed;
       x += moveSpeed;
     }
-
-    //move aliens down
-    //if (game.cnt != 0 && (game.cnt % 500) == 0){
-    //  this.y += 10;
-    //}
 
     this.bomb.tick(game, this);
   }

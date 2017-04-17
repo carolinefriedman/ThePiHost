@@ -3,16 +3,16 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 public class Shooter{
-  int x;
-  int y;
-  int health = 100;
-  int width = 30;
-  int height = 10;
-  int moveSpeed = 3;
-  boolean moveLeft = false;
-  boolean moveRight = false;
-  Bullets bullet;
+  public int x;
+  public int y;
+  public int health = 100;
+  public final int width = 30;
+  public final int height = 10;
+  public int moveSpeed = 3;
+  public boolean moveLeft = false;
+  public boolean moveRight = false;
 
+  Bullets bullet;
   Rectangle boundingBox;
 
   //contructor
