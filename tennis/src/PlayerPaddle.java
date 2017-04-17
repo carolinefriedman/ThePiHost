@@ -3,18 +3,18 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 public class PlayerPaddle{
-  int x;
-  int y;
+  public int x;
+  public int y;
   //size of paddles
-  int width = 5;
-  int height = 40;
-  int paddleSpeed = 3;
+  public final int width = 7;
+  public final int height = 80;
+  public int paddleSpeed = 3;
 
   //for making a hitbox for paddle
-  Rectangle boundingBox;
+  public Rectangle boundingBox;
 
-  boolean moveUp = false;
-  boolean moveDown = false;
+  public boolean moveUp = false;
+  public boolean moveDown = false;
 
   public PlayerPaddle(int x, int y){
     this.x = x;
