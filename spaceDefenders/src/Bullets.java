@@ -3,20 +3,20 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 public class Bullets{
-  int x;
-  int y;
-  int bulletSpeed = 10;
-  int width = 3;
-  int height = 3;
-  int playerScore = 0;
-  boolean inPlay;
-  boolean isShooting = false;
-  boolean moveLeft = false;
-  boolean moveRight = false;
-  int moveSpeed;
+  public int x;
+  public int y;
+  public int bulletSpeed = 12;
+  public final int width = 3;
+  public final int height = 3;
+  public int playerScore = 0;
+  public boolean inPlay;
+  public boolean isShooting = false;
+  public boolean moveLeft = false;
+  public boolean moveRight = false;
+  public int moveSpeed;
   Rectangle boundingBox;
   boolean collision = false;
-  public int numShots = 0;
+  public int numShots = 1;
 
   public Bullets(Shooter shooter){
     boundingBox = new Rectangle(x, y, width, height);
@@ -54,8 +54,8 @@ public class Bullets{
   private void collide(spaceDefender game){
 
 
-    for (int i =0; i < 3; i ++){
-      for (int j = 0; j < 10; j ++){
+    for (int i = 0; i < game.alienRows; i ++){
+      for (int j = 0; j < game.alienCols; j++){
         if(boundingBox.intersects(game.alienMatrix[i][j].boundingBox)){
           game.alienMatrix[i][j].isDead = true;
           game.alienMatrix[i][j].x = -50;

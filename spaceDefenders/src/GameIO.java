@@ -25,11 +25,6 @@ public class GameIO implements KeyListener{
       spaceDefender.player.bullet.numShots += 1;
       spaceDefender.entered = true;
     }
-/*
-    if (key == KeyEvent.VK_B){
-      spaceDefender.alienMatrix[1][1].bomb.isShooting = true;
-    }
-*/
   }
 
   public void keyReleased(KeyEvent e){

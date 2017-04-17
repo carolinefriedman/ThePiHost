@@ -3,16 +3,16 @@ import java.awt.Color;
 import java.awt.Rectangle;
 
 public class AlienBomb{
-  int x;
-  int y;
-  int bombSpeed = 1;
-  int width = 3;
-  int height = 6;
-  boolean inPlay;
-  boolean isShooting = false;
-  boolean moveLeft = false;
-  boolean moveRight = false;
-  int moveSpeed = 1;
+  public int x;
+  public int y;
+  public int bombSpeed = 1;
+  public final int width = 3;
+  public final int height = 6;
+  public boolean inPlay;
+  public boolean isShooting = false;
+  public boolean moveLeft = false;
+  public boolean moveRight = false;
+  public int moveSpeed = 1;
   Rectangle boundingBox;
   boolean collision = false;
 
@@ -24,16 +24,8 @@ public class AlienBomb{
     boolean inPlay = true;
   }
 
-//  public void tick(spaceDefender game, Shooter shooter){
   public void tick(spaceDefender game, Alien alien){
 
-  //    this.x = shooter.x;
-
-//    if (isShooting && (inPlay == true)){
-
-    //if (game.cnt != 0 && game.cnt % 20 == 0){
-    //  this.isShooting = true;
-    //}
     if(!isShooting){
       y = alien.y;
     }
