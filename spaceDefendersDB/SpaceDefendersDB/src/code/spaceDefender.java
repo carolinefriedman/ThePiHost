@@ -31,54 +31,56 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 public class spaceDefender extends Canvas implements Runnable{
-  //is game running?
-  static boolean gameRunning = false;
-  private int level = 1;
-  private int dropTimer = 100;
 
-  //set dimensions of game window
   public final int WIDTH = 1000;
   public final int HEIGHT = 562;
   public final Dimension gameSize = new Dimension(WIDTH, HEIGHT);
-
   BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-
+  static boolean gameRunning = false;
+  static boolean entered = false;
+  private int level = 1;
+  /** Drop timer specifies the time interval at which and alien drops a bomb
+  * When used in combination with the timer, having the interval = 100
+  * specifies a period of .1 seconds
+  */
+  private int dropTimer = 100;
+  Random random;
   public static Shooter player;
   public static GameIO gameIO;
-
   public final int alienRows = 3;
   public final int alienCols = 15;
   public Alien[][] alienMatrix = new Alien[alienRows][alienCols];
 
   public static int timeCount;
-  static boolean entered = false;
-  Random random;
-  
+
+  /**
+  *   mysql database connection credentials
+  */
   private static final String USERNAME = "root";
   private static final String PASSWORD = "";
   private static final String CONN_STRING = "jdbc:mysql://localhost/PiHostTest";
 
-  //constructor
   public spaceDefender(){
     JFrame frame = new JFrame();
-
-    //game window dimensions
     this.setMinimumSize(gameSize);
     this.setMaximumSize(gameSize);
     this.setPreferredSize(gameSize);
-
     frame.add(this, BorderLayout.CENTER);
     frame.pack();
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setVisible(true);
     frame.setResizable(false);
     frame.setTitle("Space Defenders");
-    //set to center of screen
     frame.setLocationRelativeTo(null);
+
     gameIO = new GameIO(this);
     player = new Shooter(WIDTH/2, HEIGHT - 35);
     random = new Random();
 
+    /**
+    *  Loop through each alien and position them on the screen in a
+    *  matrix formation.
+    */
     for (int i = 0; i < this.alienRows; i ++){
       for (int j = 0; j < this.alienCols; j++){
         alienMatrix[i][j] = new Alien(20 + (25*j), (25*i));
@@ -93,6 +95,12 @@ public class spaceDefender extends Canvas implements Runnable{
       render();
 
       try{
+        /**
+        * Reason that thread should sleep for a short amount of time:
+        * http://stackoverflow.com/questions/20634600/why-does-a-game-loop-need-to-sleep
+        * Smaller increments of sleep time were tried here, but the movement of figures
+        * on the screen became overly sensitive to keyboard input.
+        */
         Thread.sleep(5);
       }
       catch(Exception e){
@@ -102,7 +110,7 @@ public class spaceDefender extends Canvas implements Runnable{
   }
 
   public synchronized void start(){
-    gameRunning = true;
+    this.gameRunning = true;
     new Thread(this).start();
   }
 
@@ -113,20 +121,52 @@ public class spaceDefender extends Canvas implements Runnable{
   public void tick(){
     player.tick(this);
 
+    /**
+     * Select a randomly alien to drop a bomb every period specified by timecount
+    */
     if (timeCount != 0 && timeCount % dropTimer == 0){
       int x = random.nextInt(3);
       int y = random.nextInt(10);
       this.alienMatrix[x][y].bomb.isShooting = true;
     }
 
+    boolean allDead = true;
     for (int i = 0; i < this.alienRows; i ++){
       for (int j = 0; j < this.alienCols; j++){
         alienMatrix[i][j].tick(this);
+        allDead = allDead && alienMatrix[i][j].isDead;
         if (alienMatrix[i][j].y >= player.y)
           player.health = 0;
       }
     }
 
+    /**
+    * if all aliens are dead, increase level, reset alien
+    * positions, make aliens mover faster, and make bombs
+    * drop more faster.
+    */
+    if (allDead == true){
+      this.level++;
+      for (int i = 0; i < this.alienRows; i ++){
+        for (int j = 0; j < this.alienCols; j++){
+          alienMatrix[i][j].isDead = false;
+          alienMatrix[i][j].x = 20 + (25*j);
+          alienMatrix[i][j].y = 25 * i;
+          alienMatrix[i][j].moveSpeed = 2;
+          alienMatrix[i][j].bomb.bombSpeed++;
+          dropTimer = 50;
+          allDead = false;
+        }
+      }
+    }
+
+    /**
+    * Every time the player shoots 5 bullets, make the aliens approach the player.
+    * Every fifth shot, numShots is incremented by 1 to keep this if statement
+    * from evaluating to true every time numshots is an increment of 5.
+    * This results in the need to due numShots % 6 since 1 in every 6 shots is
+    * not done by the player.
+    */
     if (this.player.bullet.numShots != 0 && (this.player.bullet.numShots) % 6 == 0){
       for (int i = 0; i < this.alienRows; i ++){
         for (int j = 0; j < this.alienCols; j++){
@@ -135,10 +175,70 @@ public class spaceDefender extends Canvas implements Runnable{
       }
       this.player.bullet.numShots += 1;
     }
-
   }
 
-  // display start game screen (press space to start)
+  public void render(){
+    /** Set buffer stategy to triple buffering
+     * useful link describing multiple buffering techiques:
+     * https://en.wikipedia.org/wiki/Multiple_buffering
+    */
+    BufferStrategy buffer = getBufferStrategy();
+    if (buffer == null){
+      createBufferStrategy(3);
+      return;
+    }
+
+    Graphics graphics = buffer.getDrawGraphics();
+
+    if (!this.entered){
+      gameEntry(graphics, buffer);
+    }
+    else{
+      graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+      graphics.setColor(Color.GREEN);
+      graphics.drawString("Health: = " + player.health + "/100", 5, HEIGHT-10);
+  	  graphics.drawString("Score: = " + player.bullet.playerScore, getWidth()- 75, HEIGHT-10);
+
+      player.render(graphics);
+      for (int i = 0; i < this.alienRows; i ++){
+        for (int j = 0; j < this.alienCols; j++){
+          alienMatrix[i][j].render(graphics);
+        }
+      }
+    }
+
+    if (player.health <= 0){
+      GameOver(graphics, buffer);
+    }
+
+    graphics.dispose();
+    buffer.show();
+  }
+
+  private void dbUpdate() throws SQLException{
+    Connection conn = null;
+    PreparedStatement stmt = null;
+
+    try{
+      conn = (Connection) DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+      String query = "insert into HighScores (name, score) values('bagel', 100000)";
+      stmt = (PreparedStatement) conn.prepareStatement(query);
+      stmt.execute();
+
+    } catch (SQLException e){
+      System.err.println(e);
+
+    } finally {
+      if (stmt != null){
+        stmt.close();
+      }
+      if (conn != null){
+        conn.close();
+      }
+    }
+  }
+
+  /** Function to display the game entrance screen */
   public void gameEntry(Graphics graphics, BufferStrategy buffer){
     graphics.setColor(Color.GREEN);
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
@@ -153,30 +253,8 @@ public class spaceDefender extends Canvas implements Runnable{
     graphics.dispose();
     buffer.show();
   }
-  
-  private void dbUpdate() throws SQLException{
-	  Connection conn = null;
-	  PreparedStatement stmt = null;
-		
-	  try{
-		  conn = (Connection) DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
 
-		  String query = "insert into HighScores (name, score) values('bagel', 100000)";
-		  stmt = (PreparedStatement) conn.prepareStatement(query);
-		  stmt.execute();
-
-	  } catch (SQLException e){
-		  System.err.println(e);
-	  } finally {
-		  if (stmt != null){
-			  stmt.close();
-		  }
-		  if (conn != null){
-			  conn.close();
-		  }
-	  }
-  }
-
+  /** Function to display the game over screen */
   public void GameOver(Graphics graphics, BufferStrategy buffer){
     graphics.setColor(Color.GREEN);
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
@@ -194,66 +272,6 @@ public class spaceDefender extends Canvas implements Runnable{
     gameRunning = false;
   }
 
-  public void render(){
-    //BufferStrategy is the way in which it is Buffered
-    BufferStrategy buffer = getBufferStrategy();
-    if (buffer == null){  //if there is no buffer strategy
-      createBufferStrategy(3);  //set BufferStrategy to 3 for triple buffering
-      return;
-    }
-
-    Graphics graphics = buffer.getDrawGraphics();
-
-    if (!this.entered){
-      gameEntry(graphics, buffer);
-    }
-
-    else{
-      graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-
-      graphics.setColor(Color.GREEN);
-      graphics.drawString("Health: = " + player.health + "/100", 5, HEIGHT-10);
-  	  graphics.drawString("Score: = " + player.bullet.playerScore, getWidth()- 75, HEIGHT-10);
-
-      player.render(graphics);
-
-      boolean allDead = true;
-      for (int i = 0; i < this.alienRows; i ++){
-        for (int j = 0; j < this.alienCols; j++){
-          alienMatrix[i][j].render(graphics);
-          allDead = allDead && alienMatrix[i][j].isDead;
-        }
-      }
-
-      // if all aliens are dead, increase level,
-      // reset alien positions, and make bombs drop
-      // more frequently
-      if (allDead == true){
-        this.level++;
-        for (int i = 0; i < this.alienRows; i ++){
-          for (int j = 0; j < this.alienCols; j++){
-            alienMatrix[i][j].isDead = false;
-            alienMatrix[i][j].x = 20 + (25*j);
-            alienMatrix[i][j].y = 25 * i;
-            alienMatrix[i][j].moveSpeed = 2;
-            alienMatrix[i][j].bomb.bombSpeed++;
-            dropTimer = 50;
-            allDead = false;
-          }
-        }
-      }
-
-    }
-
-    if (player.health <= 0){
-      GameOver(graphics, buffer);
-    }
-
-    graphics.dispose();
-    buffer.show();
-
-  }
-
   public static void main(String args[]) throws SQLException{
     spaceDefender game = new spaceDefender();
 
@@ -264,14 +282,11 @@ public class spaceDefender extends Canvas implements Runnable{
           timeCount += 1;
       }
     };
+    /** incriment timeCount every millisecond */
     Timer timer = new Timer(1, actListner);
-
     timer.start();
 
     game.start();
   }
-
-
-
 
 }
