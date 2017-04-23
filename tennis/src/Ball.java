@@ -18,24 +18,20 @@ public class Ball{
   public Ball(int x, int y){
     this.x = x;
     this.y = y;
-
-    //sets bounds on hit box for ball
     boundingBox = new Rectangle(x, y, size, size);
     boundingBox.setBounds(this.x, this.y, this.size, this.size);
-
     velocityX = speed;
     velocityY = speed;
   }
 
   public void tick(Tennis game){
     boundingBox.setBounds(this.x, this.y, this.size, this.size);
-    //if there is a collosion with end of screen
-    //if ball hits left wall
+
     if(x <= 0){
       velocityX = speed;
       game.compScore++;
     }
-    //if ball hits right wall
+
     else if (x + size >= game.getWidth()){
       velocityX = -speed;
       game.playerScore++;
@@ -58,13 +54,12 @@ public class Ball{
     if(boundingBox.intersects(game.player.boundingBox)){
       velocityX = speed;
 
-      /*
+      /**
        * Each collision increases intersectionHits by three
        * due to rendering of collision happening multiple times.
-       * Therefore, if intersectionHits modulo 3 == 0, "one"
+       * Therefore, if intersectionHits modulo 3 == 0, a single
        * collision occured and player score is increased by one
        */
-
       this.intersectionHits += 1;
       if (this.intersectionHits % 3 == 0 && this.intersectionHits != 0){
         game.playerScore += 1;
