@@ -10,7 +10,6 @@ public class AlienBomb{
   public int bombSpeed = 1;
   public final int width = 3;
   public final int height = 6;
-  public boolean inPlay;
   public boolean isShooting = false;
   public boolean moveLeft = false;
   public boolean moveRight = false;
@@ -23,16 +22,22 @@ public class AlienBomb{
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
     this.x = alien.x + (alien.width / 2);
     this.y = alien.y;
-    boolean inPlay = true;
   }
 
   public void tick(spaceDefender game, Alien alien){
-
+    /**
+    * as long as the bomb isnt scheduled to drop, maintain position
+    * behind the alien
+    */
     if(!isShooting){
       y = alien.y;
     }
+
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
 
+    /**
+    * If bomb drops below the shooter, reset its position to behind the alien
+    */
     if (y > game.player.y){
       x = alien.x + (alien.width / 2);
       y = alien.y;

@@ -16,7 +16,6 @@ public class Alien{
 
   Rectangle boundingBox;
 
-  //contructor
   public Alien(int x, int y){
     this.x = x;
     this.y = y;
@@ -27,12 +26,15 @@ public class Alien{
 
   public void tick(spaceDefender game){
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
+
     x += moveSpeed;
+
     if (x >= game.WIDTH - width){
       moveSpeed = -moveSpeed;
       x += this.moveSpeed;
     }
-    if (x <= 0){
+
+    else if (x <= 0){
       moveSpeed = -moveSpeed;
       x += moveSpeed;
     }

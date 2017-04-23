@@ -17,7 +17,6 @@ public class Shooter{
   Bullets bullet;
   Rectangle boundingBox;
 
-  //contructor
   public Shooter(int x, int y){
     boundingBox = new Rectangle(x, y, width, height);
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
