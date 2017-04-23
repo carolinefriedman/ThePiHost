@@ -7,7 +7,13 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.Color;
 
-// first game. tutorial from : https://www.youtube.com/watch?v=lE18VALSCAA
+/**
+*   Tennis is the first game that our team wrote.  In learning how to write
+*   a game in Java, we followed the tutorial at:
+*   https://www.youtube.com/watch?v=lE18VALSCAA
+*   The basic theory and flow follow what we learned in the tutorial, however,
+*   modifications were made to better suite the motives of our group.
+*/
 
 public class Tennis extends Canvas implements Runnable {
 
@@ -17,33 +23,48 @@ public class Tennis extends Canvas implements Runnable {
   public static ComputerPaddle compplayer;
   public static Ball ball;
   public static GameIO io;
-
-  //window sizing
   public final int WIDTH = 1000;
   public final int HEIGHT = 562;
-
-  //condense w and h into one var
   public final Dimension gameSize = new Dimension(WIDTH, HEIGHT);
   public final String TITLE = "Tennis";
-
   BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-
-  //keep track of player score and computer score
   public int playerScore = 0;
   public int pScoreTracker = 0;
   public int compScore = 0;
-
-  //is game running?
   static boolean gameRunning = false;
   static boolean entered = false;
+
+  public Tennis(){
+
+    frame = new JFrame();
+    this.setMinimumSize(gameSize);
+    this.setPreferredSize(gameSize);
+    this.setMaximumSize(gameSize);
+    frame.add(this, BorderLayout.CENTER);
+    frame.pack();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(true);
+    frame.setResizable(false);
+    frame.setTitle(TITLE);
+    frame.setLocationRelativeTo(null);
+
+    player = new PlayerPaddle(10, 60);
+    compplayer = new ComputerPaddle(getWidth() - 25, 60);
+    ball = new Ball((getWidth()/2), (getHeight()/2));
+    io = new GameIO(this);
+  }
 
   public void run(){
     while (gameRunning){
       tick();
       render();
-      //this try catch slows down execution of the program so that keyboard input
-      //doesnt occur so fast
       try{
+        /**
+        * Reason that thread should sleep for a short amount of time:
+        * http://stackoverflow.com/questions/20634600/why-does-a-game-loop-need-to-sleep
+        * Smaller increments of sleep time were tried here, but the movement of figures
+        * on the screen became overly sensitive to keyboard input.
+        */
         Thread.sleep(5);
       }
       catch(Exception e){
@@ -62,39 +83,61 @@ public class Tennis extends Canvas implements Runnable {
     System.exit(0);
   }
 
-  //constructor
-  public Tennis(){
-    //window of game
-    frame = new JFrame();
-
-    this.setMinimumSize(gameSize);
-    this.setPreferredSize(gameSize);
-    this.setMaximumSize(gameSize);
-
-    frame.add(this, BorderLayout.CENTER);
-    //makes contents appear in desired frame dimensions
-    frame.pack();
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    //makes fram appear on screen
-    frame.setVisible(true);
-    frame.setResizable(false);
-    frame.setTitle(TITLE);
-    frame.setLocationRelativeTo(null);
-
-    // initiate paddle and ball instances here
-    player = new PlayerPaddle(10, 60);
-    compplayer = new ComputerPaddle(getWidth() - 25, 60);
-    ball = new Ball((getWidth()/2), (getHeight()/2));
-    io = new GameIO(this);
-  }
-
   public void tick(){
-    //call tick for player and ball instances here
     player.tick(this);
     compplayer.tick(this);
     ball.tick(this);
   }
 
+  public void render(){
+    /** Set buffer stategy to triple buffering
+     * useful link describing multiple buffering techiques:
+     * https://en.wikipedia.org/wiki/Multiple_buffering
+    */
+    BufferStrategy buffStrat = getBufferStrategy();
+
+    if (buffStrat == null){
+      createBufferStrategy(3);
+      return;
+    }
+
+    Graphics graphics = buffStrat.getDrawGraphics();
+
+    if (!this.entered){
+      gameEntry(graphics, buffStrat);
+    }
+    else{
+      graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+      graphics.setColor(Color.GREEN);
+      graphics.drawString("Player: " + playerScore, 5, 15);
+      graphics.drawString("Computer: " + compScore, getWidth() - 87, 15);
+
+      player.render(graphics);
+      compplayer.render(graphics);
+      ball.render(graphics);
+    }
+
+    /**
+    *  Every time the player scores 4 points (this score interval is arbitrary,
+    *  but while testing, 4 proved to be a good interval), make the ball move
+    *  faster. Also allow the paddles to move faster to keep up with ball movement.
+    */
+    if (this.pScoreTracker % 4 == 0 && this.pScoreTracker > 0){
+      ball.speed += 1;
+      this.compplayer.paddleSpeed += 1;
+      this.player.paddleSpeed += 1;
+      this.pScoreTracker = 0;
+    }
+
+    if (this.compScore >= 10){
+      GameOver(graphics, buffStrat);
+    }
+
+    graphics.dispose();
+    buffStrat.show();
+  }
+
+  /** Function to display the game entrance screen */
   public void gameEntry(Graphics graphics, BufferStrategy buffer){
     graphics.setColor(Color.GREEN);
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
@@ -111,6 +154,7 @@ public class Tennis extends Canvas implements Runnable {
     buffer.show();
   }
 
+  /** Function to display the game over screen */
   public void GameOver(Graphics graphics, BufferStrategy buffer){
     graphics.setColor(Color.GREEN);
     graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
@@ -122,50 +166,7 @@ public class Tennis extends Canvas implements Runnable {
     gameRunning = false;
   }
 
-  public void render(){
-    //BufferStrategy is the way in which it is Buffered
-    BufferStrategy buffStrat = getBufferStrategy();
-    if (buffStrat == null){  //if there is no buffer strategy
-      createBufferStrategy(3);  //set BufferStrategy to 3
-      return;
-    }
-
-    Graphics graphics = buffStrat.getDrawGraphics();
-
-    if (!this.entered){
-      gameEntry(graphics, buffStrat);
-    }
-
-    else{
-      graphics.drawImage(image, 0, 0, getWidth(), getHeight(), null);
-      graphics.setColor(Color.GREEN);
-      // print scores
-      graphics.drawString("Player: " + playerScore, 5, 15);
-      graphics.drawString("Computer: " + compScore, getWidth() - 87, 15);
-
-    //call render for player and ball instances here
-      player.render(graphics);
-      compplayer.render(graphics);
-      ball.render(graphics);
-    }
-
-    if (this.pScoreTracker % 4 == 0 && this.pScoreTracker > 0){
-      ball.speed += 1;
-      this.compplayer.paddleSpeed += 1;
-      this.player.paddleSpeed += 1;
-      this.pScoreTracker = 0;
-    }
-
-    if (this.compScore >= 10){
-      GameOver(graphics, buffStrat);
-    }
-
-    graphics.dispose();
-    buffStrat.show();
-  }
-
   public static void main(String[] args){
-    //create new game
     Tennis game = new Tennis();
     game.start();
   }

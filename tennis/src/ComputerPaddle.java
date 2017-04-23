@@ -5,21 +5,16 @@ import java.awt.Rectangle;
 public class ComputerPaddle{
   public int x;
   public int y;
-  //size of paddles
   public final int width = 7;
   public final int height = 80;
-
   public int paddleSpeed = 3;
-
-  Rectangle boundingBox;
-
   public boolean goingUp = false;
   public boolean goingDown = false;
+  Rectangle boundingBox;
 
   public ComputerPaddle(int x, int y){
     this.x = x;
     this.y = y;
-
     boundingBox = new Rectangle(x, y, width, height);
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
   }
