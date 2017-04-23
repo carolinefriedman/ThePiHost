@@ -38,7 +38,7 @@ public class spaceDefender extends Canvas implements Runnable{
   BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
   static boolean gameRunning = false;
   static boolean entered = false;
-  private int level = 1;
+  private int level = 0;
   /** Drop timer specifies the time interval at which and alien drops a bomb
   * When used in combination with the timer, having the interval = 100
   * specifies a period of .1 seconds

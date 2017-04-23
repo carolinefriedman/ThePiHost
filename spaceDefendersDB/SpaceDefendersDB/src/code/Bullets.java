@@ -55,7 +55,9 @@ public class Bullets{
 
   private void collide(spaceDefender game){
 
-
+    /**
+    * Move alien off of the screen for the rest of the level if it is dead
+    */
     for (int i = 0; i < game.alienRows; i ++){
       for (int j = 0; j < game.alienCols; j++){
         if(boundingBox.intersects(game.alienMatrix[i][j].boundingBox)){
