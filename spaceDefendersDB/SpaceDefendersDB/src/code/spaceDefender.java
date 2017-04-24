@@ -206,32 +206,38 @@ public class spaceDefender extends Canvas implements Runnable{
     buffer.show();
   }
 
-  private void dbUpdate() throws SQLException{
+  private void dbUpdate(Graphics graphics) throws SQLException{
     Connection conn = null;
-    PreparedStatement stmt = null;
+    PreparedStatement updateStmt = null;
+    PreparedStatement readStmt = null;
     DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
     LocalDateTime dateNow = LocalDateTime.now();
 
     try{
       conn = (Connection) DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
       String updateQuery = "insert into spaceDefendersScores (date, score) values(?, ?)";
-      stmt1 = (PreparedStatement) conn.prepareStatement(updateQuery);
-      stmt1.setString(1, dateFormat.format(dateNow));
-      stmt1.setInt(2, player.bullet.playerScore);
-      stmt1.execute();
+      updateStmt = (PreparedStatement) conn.prepareStatement(updateQuery);
+      updateStmt.setString(1, dateFormat.format(dateNow));
+      updateStmt.setInt(2, player.bullet.playerScore);
+      updateStmt.execute();
       String readQuery = "SELECT date, score FROM spaceDefendersScores ORDER BY score DESC LIMIT 3";
       readStmt = (PreparedStatement) conn.prepareStatement(readQuery);
       ResultSet highScores = readStmt.executeQuery();
+      int printLocation = HEIGHT/2 + 120;
       while (highScores.next()){
-          System.out.println("Date: " + highScores.getString(1) + ", Score: "+ highScores.getString(2));
+          graphics.drawString("Date: " + highScores.getString(1) + ", Score: "+ highScores.getString(2), WIDTH/2 - 130, printLocation);
+          printLocation += 30;
       }
 
     } catch (SQLException e){
       System.err.println(e);
 
     } finally {
-      if (readStmt !=null || stmt1 != null){
-        stmt1.close();
+      if (readStmt != null){
+    	  readStmt.close();
+      }
+      if (updateStmt != null){
+    	  updateStmt.close();
       }
       if (conn != null){
         conn.close();
