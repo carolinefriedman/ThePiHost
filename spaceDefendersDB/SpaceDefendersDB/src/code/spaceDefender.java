@@ -1,30 +1,21 @@
 package code;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-
-import java.awt.Canvas;
-import java.awt.Dimension;
 import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
-
-import java.awt.image.BufferedImage;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
+import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.event.MouseListener;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Random;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
+import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import com.mysql.jdbc.Connection;
@@ -58,7 +49,7 @@ public class spaceDefender extends Canvas implements Runnable{
   */
   private static final String USERNAME = "root";
   private static final String PASSWORD = "";
-  private static final String CONN_STRING = "jdbc:mysql://localhost/PiHostTest";
+  private static final String CONN_STRING = "jdbc:mysql://localhost/piproject";
 
   public spaceDefender(){
     JFrame frame = new JFrame();
@@ -218,11 +209,15 @@ public class spaceDefender extends Canvas implements Runnable{
   private void dbUpdate() throws SQLException{
     Connection conn = null;
     PreparedStatement stmt = null;
+    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+    LocalDateTime dateNow = LocalDateTime.now();
 
     try{
       conn = (Connection) DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
-      String query = "insert into HighScores (name, score) values('bagel', 100000)";
+      String query = "insert into spaceDefendersScores (date, score) values(?, ?)";
       stmt = (PreparedStatement) conn.prepareStatement(query);
+      stmt.setString(1, dateFormat.format(dateNow));
+      stmt.setInt(2, player.bullet.playerScore);
       stmt.execute();
 
     } catch (SQLException e){
