@@ -1,30 +1,21 @@
 package code;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-
-import java.awt.Canvas;
-import java.awt.Dimension;
 import java.awt.BorderLayout;
-
-import javax.swing.JFrame;
-
-import java.awt.image.BufferedImage;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
+import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.event.MouseListener;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.Random;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Random;
 
+import javax.swing.JFrame;
 import javax.swing.Timer;
 
 import com.mysql.jdbc.Connection;
@@ -58,7 +49,7 @@ public class spaceDefender extends Canvas implements Runnable{
   */
   private static final String USERNAME = "root";
   private static final String PASSWORD = "";
-  private static final String CONN_STRING = "jdbc:mysql://localhost/PiHostTest";
+  private static final String CONN_STRING = "jdbc:mysql://localhost/piproject";
 
   public spaceDefender(){
     JFrame frame = new JFrame();
@@ -215,22 +206,38 @@ public class spaceDefender extends Canvas implements Runnable{
     buffer.show();
   }
 
-  private void dbUpdate() throws SQLException{
+  private void dbUpdate(Graphics graphics) throws SQLException{
     Connection conn = null;
-    PreparedStatement stmt = null;
+    PreparedStatement updateStmt = null;
+    PreparedStatement readStmt = null;
+    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss");
+    LocalDateTime dateNow = LocalDateTime.now();
 
     try{
       conn = (Connection) DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
-      String query = "insert into HighScores (name, score) values('bagel', 100000)";
-      stmt = (PreparedStatement) conn.prepareStatement(query);
-      stmt.execute();
+      String updateQuery = "insert into spaceDefendersScores (date, score) values(?, ?)";
+      updateStmt = (PreparedStatement) conn.prepareStatement(updateQuery);
+      updateStmt.setString(1, dateFormat.format(dateNow));
+      updateStmt.setInt(2, player.bullet.playerScore);
+      updateStmt.execute();
+      String readQuery = "SELECT date, score FROM spaceDefendersScores ORDER BY score DESC LIMIT 3";
+      readStmt = (PreparedStatement) conn.prepareStatement(readQuery);
+      ResultSet highScores = readStmt.executeQuery();
+      int printLocation = HEIGHT/2 + 120;
+      while (highScores.next()){
+          graphics.drawString("Date: " + highScores.getString(1) + ", Score: "+ highScores.getString(2), WIDTH/2 - 130, printLocation);
+          printLocation += 30;
+      }
 
     } catch (SQLException e){
       System.err.println(e);
 
     } finally {
-      if (stmt != null){
-        stmt.close();
+      if (readStmt != null){
+    	  readStmt.close();
+      }
+      if (updateStmt != null){
+    	  updateStmt.close();
       }
       if (conn != null){
         conn.close();
