@@ -214,18 +214,24 @@ public class spaceDefender extends Canvas implements Runnable{
 
     try{
       conn = (Connection) DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
-      String query = "insert into spaceDefendersScores (date, score) values(?, ?)";
-      stmt = (PreparedStatement) conn.prepareStatement(query);
-      stmt.setString(1, dateFormat.format(dateNow));
-      stmt.setInt(2, player.bullet.playerScore);
-      stmt.execute();
+      String updateQuery = "insert into spaceDefendersScores (date, score) values(?, ?)";
+      stmt1 = (PreparedStatement) conn.prepareStatement(updateQuery);
+      stmt1.setString(1, dateFormat.format(dateNow));
+      stmt1.setInt(2, player.bullet.playerScore);
+      stmt1.execute();
+      String readQuery = "SELECT date, score FROM spaceDefendersScores ORDER BY score DESC LIMIT 3";
+      readStmt = (PreparedStatement) conn.prepareStatement(readQuery);
+      ResultSet highScores = readStmt.executeQuery();
+      while (highScores.next()){
+          System.out.println("Date: " + highScores.getString(1) + ", Score: "+ highScores.getString(2));
+      }
 
     } catch (SQLException e){
       System.err.println(e);
 
     } finally {
-      if (stmt != null){
-        stmt.close();
+      if (readStmt !=null || stmt1 != null){
+        stmt1.close();
       }
       if (conn != null){
         conn.close();
