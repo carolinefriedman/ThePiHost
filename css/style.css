@@ -1,106 +1,188 @@
-@font-face {
-  font-family: VCR OSD Mono;
-  src: url(../assets/VCR_OSD_MONO_1.001.ttf);
+/* custom font faces */
+@font-face { 
+	font-family: Intro;
+	src: url("/assets/intro.otf");
 }
-body {
-  background-color: transparent;
-  background-image: url();
-  background-attachment: fixed;
-  font-family: 'VCR OSD Mono', monospace;
-  overflow: hidden;
-  text-align: center;
+
+/* custon css styles */
+body{
+	background-color: #fff;
+	font-family: 'Intro', sans-serif;
+	color: rgba(0,0,0,0.5);
 }
-a { color: #000; }
-a:hover { text-decoration: none; }
-a:visited { text-decoration: none; }
-p {   
-  color: #000;
-  font-size: 2vw;
-  overflow: hidden;
-  line-height: 1em;
-  text-transform: none;
+a, a:link, a:active {
+	text-decoration: none;
 }
-h1 {
-  font-size: 5vw;
-  text-align: center;
+h1, h1 a {
+	font-family: 'Intro', sans-serif;
+	font-size: 6vw;
+	position: relative;
+	transition: ease-in 0.2s;
 }
-.container {
-  height: 100%;
-  width: 100%;
+h1 a:hover { }
+h2 { font-size: 4vw; }
+p { font-size: 1.8em; display: inline; line-height: 1.5em; }
+p#retro a {
+	border-bottom: 5px solid rgba(188,17,66,0.70);
+	color: rgba(0,0,0,0.5);
+	display: inline;
+	transition: ease-in 0.3s, ease-out 0.3s;
 }
-#content {
-  max-height: 100%;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 75%;
+p#retro a:hover {
+	color: transparent;
+	text-shadow: 1px 1px rgba(188,17,66,0.70), -1px -1px rgba(117,169,40,0.7);
+	transition: ease-in 0.3s, ease-out 0.3s;
 }
-#game-directory {
-  height: 100%;
-  margin: 100% 0 0;
-  position: relative;
-  width: 100%;
+p#vision-statement { 
+	color: rgba(188,17,66,0.70); 
+	font-size: 2.5em;
+	line-height: auto;
 }
-.game-directory-container {
-  display: -webkit-flex;
-  display: flex;
-  height: auto;
-  position: relative;
-  width: 100%;
+
+.content { 
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 60%; 
 }
-.game-directory-item {
-  background-color: #efefef;
-  height: 200px;
-  margin: 0 20px;
-  width: 200px;
+
+.section { text-align: center; }
+.section img { }
+.section h1 a { 
+	color: #bc1142;
+	transition: ease-in 0.3s;
 }
-.game-directory-item img {
-  display: block;
-  height: auto;
-  max-width: 100%;
+.section h1 a:hover {
+	opacity: 0.8;
+	transition: ease-in 0.3s;
 }
-/* hover descriptions */
-.overlay-container {
-  position: relative;
-  width: 50%;
+.slide img {
+	width: 65%;
 }
-.hoverbox {
-  background-color: #000;
-  bottom: 0;
-  height: auto;
-  left: 12%;
+
+#home { }
+#home img {
+	height: 50%;
+	left: 50%;
+	position: absolute;
+	opacity: 0.3;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: auto;
+}
+/*
+#download {
+	background-color: transparent;
+	border: 5px solid rgba(188,17,66,0.70);
+	border-radius: 15px;
+	font-size: 3vw;
+	margin: auto;
+	transition: ease-in 0.2s, ease-out 0.2s;
+	width: 30%;
+}
+#download a {
+	color: rgba(188,17,66,0.70);
+	display: block;
+	padding: 20px 10px 10px;
+	text-decoration: none;
+	transition: ease-in 0.2s ease-out 0.2s;
+	width: auto;
+}
+#download:hover {
+	background-color: rgba(188,17,66,0.70);
+	background-position: 0 -15px;
+	color: #fff;
+	transition: ease-in 0.2s, ease-out 0.2s;
+}
+#download a:hover { color: #fff; }
+*/
+
+.download {
+	background-color: transparent;
+	border: 5px solid rgba(188,17,66,1.00);
+	border-radius: 15px;
+	color: #bc1142;
+  font-size: 3vw;
+	opacity: 1;
+  padding: 20px 10px 10px;
+	text-decoration: none;
+  transition:  ease-in 0.2s ease-out 0.2s;
+}
+.download a { color: #bc1142; opacity: 1.0; }
+.download:hover, .download a:hover {
+  background: #bc1142;
+	color: #fff;
+}
+.overlay {
+  background: rgba(0,0,0,0.5);
   opacity: 0;
-  position: absolute;
+	position: absolute;
   top: 0;
-  transition: .5s ease;
-  width: 200px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+	transition: opacity 0.3s;
+  visibility: hidden;
 }
-.overlay-container:hover .hoverbox { opacity: 0.7; }
-.hovertext, .hovertext a {
-  color: #fff;
+.overlay:target {
+	opacity: 1;
+  visibility: visible;
+}
+.popup {
+	background: #fff;
+  border-radius: 5px;
+	left: 50%;
+  padding: 2.5%;
+	position: absolute;
+	top: 50%;
+	transition: all 5s ease-in-out;
+	transform: translate(-50%, -50%);
+  width: 35%;  
+}
+.popup li {
+	padding: 5px 0 5px 5px;
+	text-align: left;
+}
+.popup h2 {
+	font-size: 1.8vw;
+	text-align: center;
+  width: 100%;
+}
+.popup .close {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #404040;
 }
+.popup .close:hover { color: #bc1142; }
+#download, #download a { color: #bc1142; padding-top: 2.5%; transition: 0.5s ease-in, 0.5s ease-out; }
+#download:hover, #download a:hover { opacity: 0.7; transition: 0.5s ease-in, 0.5s ease-out; }
 
-
-#download-link {
-  display: block;
-  height: 5%;
-  width: auto;
+#credits { 
+	width: 100%;
 }
-#download-link h1 {
-  font-size: 2vw;
-  text-align: center;
+p.team {
+	display: block;
 }
-#n64 img {
-  height: auto;
-  left: 50%;
-  max-width: 85px;
-  position: absolute;
-  bottom: 1%;
-  transform: translate(-50%, -50%);
+#credits img {
+	bottom: 5px;
+	display: inline-block;
+	height: auto;
+	padding-left: 2%;
+	position: relative;
+	max-width: 5%;
+}
+#credits img:first-child {
+	padding-left: -2%;
+}
+#backToTop {
+	left: 2%;
+	position: fixed;
+	top: 2%;
+	z-index: 999;
 }
