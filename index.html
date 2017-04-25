@@ -1,76 +1,79 @@
 <!doctype html>
-<!--
-
--->
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="description" content="CSCI-3308, Software Development Methods and Tools">
-	<title>CSCI-3308 | The Pi Host</title>
-	
-	<!-- stylesheets -->
-	<link href="css/style.css" rel="stylesheet" type="text/css">
-	<link href="css/mobile.less" rel="stylesheet" type="text/css">
-	
-	<!-- fullpage.js -->
-	<link rel="stylesheet" type="text/css" href="scripts/jquery.fullPage.css" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript" src="scripts/jquery.fullPage.js"></script>
-	
-	<!-- fonts -->
-	
-	<!-- scripts -->
+	<title>THE PI HOST</title>
+	<meta name="author" content="Caroline Friedman, Austin Griffith" />
+	<meta name="description" content="CSCI 3308, The Pi Host | Hosting games through Raspberry Pi" />
 
+	<!-- stylesheets -->
+	<link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+	<!-- scripts -->
+	<script src="https://use.fontawesome.com/70898ca73d.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="scripts/scrolloverflow.js"></script>
+	<script type="text/javascript" src="scripts/jquery.fullPage.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				sectionsColor: ['#fff', '#fff', '#fff', '#fff' ]
+			});
+		});
+	</script>
 </head>
+
 <body>
-	<div class="container">
-		<div id="content">
-		
-		<div id="fullpage">
-			<div class="section">Some section</div>
-			<div class="section">Some section</div>
-			<div class="section">Some section</div>
-			<div class="section">Some section</div>
-		</div>
-		
-			<h1>ThePiHost</h1>
-			<div class="game-directory-container">
-			<div class="overlay-container">
-					<img src="assets/game-example copy.png" class="game-directory-item"/>
-					<div class="hoverbox">
-						<div class="hovertext">
-							"GAME NAME GOES HERE"
-						</div>
-					</div>
-				</div>
-				<div class="overlay-container">
-					<img src="assets/game-example copy.png" class="game-directory-item"/>
-					<div class="hoverbox">
-						<div class="hovertext">
-							"GAME NAME GOES HERE"
-						</div>
-					</div>
-				</div>
-				<div class="overlay-container">
-					<img src="assets/game-example copy.png" class="game-directory-item"/>
-					<div class="hoverbox">
-						<div class="hovertext">
-							"GAME NAME GOES HERE"
-						</div>
-					</div>
-				</div>
-				<div class="overlay-container">
-					<img src="assets/game-example copy.png" class="game-directory-item"/>
-					<div class="hoverbox">
-						<div class="hovertext">
-							"GAME NAME GOES HERE"
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="download-link"><h1>DOWNLOAD</h1></div>
-		</div>
-		<div id="n64"><img src="assets/n64.svg"></div>
+<!-- <div id="backToTop"><a href="#home"><i class="fa fa-arrow-up" aria-hidden="true"></i></a></div> -->
+<div id="fullpage">
+	<div class="section active" id="home">
+		<img src="assets/pi logo.png"/>
+		<h1><a href="#about">The Pi Host</a></h1>
 	</div>
+	<div class="section" id="about">
+	  <div class="slide active">
+			<div class="content">
+				<p>Bringing</p> <p id="retro"><a href="#games">retro 90's games</a></p> <p>back to life for anyone, any time, anywhere.<br><br/></p>
+				<p id="vision-statement">Because the best games are free.</p>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="games">
+		<div class="slide active"><h1>Games</h1></div>
+	  <div class="slide"><h1><img src="assets/pong-game.png"/></h1></div>
+	  <div class="slide"><h1><img src="assets/space-invaders-game.png"/></h1></div>
+	</div>
+	<div class="section" id="section3">
+	<a class="download" href="#popup">Download</a>
+	<div id="popup" class="overlay">
+		<div class="popup">
+			<h2>How to download:
+			<a class="close" href="#">×</a>
+			<ol>
+				<li>Directions</li>
+				<li>Directions</li>
+			</ol>
+			<a href="/" id="download">Proceed to Download</a>
+			</h2>
+		</div>
+	</div>
+		<!-- <div id="download">
+			<a href="/" target="_blank">Download</a>
+		</div> -->
+	</div>
+	<div class="section" id="credits">
+			<h2>Credits: </h2>
+			<p class="team">Caroline Friedman</p>
+			<p class="team">Austin Griffith</p>
+			<p class="team">Josh Griffiths</p>
+			<p class="team">Galen Pogoncheff</p>
+			<img src="assets/nintendo-64.png"/>
+			<img src="assets/pong.png"/>
+			<img src="assets/space-invaders.png"/>
+	</div>
+
+</div>
 </body>
 </html>
