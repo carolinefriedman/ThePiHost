@@ -48,7 +48,7 @@ public class Tennis extends Canvas implements Runnable {
    *   mysql database connection credentials
    */
    private static final String USERNAME = "root";
-   private static final String PASSWORD = "p1#h0sT";
+   private static final String PASSWORD = "";
    private static final String CONN_STRING = "jdbc:mysql://localhost/piproject";
 
   public Tennis(){
