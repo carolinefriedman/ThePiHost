@@ -30,7 +30,7 @@ public class spaceDefender extends Canvas implements Runnable{
   static boolean gameRunning = false;
   static boolean entered = false;
   private int level = 0;
-  /** Drop timer specifies the time interval at which and alien drops a bomb
+  /** dropTimer specifies the time interval at which and alien drops a bomb
   * When used in combination with the timer, having the interval = 100
   * specifies a period of .1 seconds
   */
@@ -109,6 +109,10 @@ public class spaceDefender extends Canvas implements Runnable{
     System.exit(0);
   }
 
+  /**
+  * tick method is used to alter attributes and variables of class
+  * instances.
+  */
   public void tick(){
     player.tick(this);
 
@@ -167,7 +171,10 @@ public class spaceDefender extends Canvas implements Runnable{
       this.player.bullet.numShots += 1;
     }
   }
-
+  /**
+  *  render method is used to render the images for the jFrame and
+  *  game class instances.
+  */
   public void render(){
     /** Set buffer stategy to triple buffering
      * useful link describing multiple buffering techiques:
