@@ -3,8 +3,15 @@ package code;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * This allows the user to control the shooter.
+ * Shooter is moved left by pressing the left arrow key, and right by pressing the right arrow key on keyboard.
+ * Spacebar is used to initially enter the game.  Once in the game, spacebar is used to fire a bullet.
+ */
 public class GameIO implements KeyListener{
-
+  /**
+   * @param game spaceDefender instance (where the game is run from)
+   */
   public GameIO(spaceDefender game){
     game.addKeyListener(this);
   }
