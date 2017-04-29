@@ -52,15 +52,31 @@
 	<a class="download" href="#popup">Download</a>
 	<div id="popup" class="overlay">
 		<div class="popup">
-			<h2>How to download:
 			<a class="close" href="#">×</a>
-			<ol>
-				<li>Directions</li>
-				<li>Directions</li>
-				<li>Directions</li>
-			</ol>
-			<div id="download"><a href="assets/ThePiHost-download-package.zip" download>Proceed to download</a></div>
-			</h2>
+			<h1>Instructions:</h1>
+			<div class="linkSlider"> 
+				<h2 class="linkHeading">How to download</h2>
+				<div class="linkExpand"> 
+				<ol>
+					<li>Download and decompress the package</li>
+					<li>Double click "ThePiHostLauncher.jar"</li>
+					<li>Enjoy!</li>
+				</ol>
+				</div>
+			</div>
+			<div class="linkSlider"> 
+				<h2 class="linkHeading">How to play emulated games</h2>
+				<div class="linkExpand"> 
+				<ol>
+					<li>Follow download instructions above.</li>
+					<li>Locate the "emulator" folder</li>
+					<li>Launch "OpenEmu" application</li>
+					<li>With application running, locate "Emulated Games" folder</li>
+					<li>Drag and drop the games of your choice into OpenEmu</li>
+				</ol>
+				</div>
+		</div>
+			<div id="download"><a href="assets/ThePiHostApp.tar.gz" download>Proceed to download</a></div>
 		</div>
 	</div>
 	</div>
@@ -74,7 +90,14 @@
 			<img src="assets/pong.png"/>
 			<img src="assets/space-invaders.png"/>
 	</div>
-
 </div>
 </body>
+<script type="text/javascript"> 
+	$(document).ready(function() { 
+		$(".linkExpand").hide(); 
+		$(".linkHeading").click(function() { 
+			$(this).next(".linkExpand").slideToggle('fast'); 
+		}); 
+	}); 
+</script> 
 </html>

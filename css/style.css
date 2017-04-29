@@ -1,14 +1,15 @@
 /* custom font faces */
 @font-face { 
 	font-family: Intro;
-	src: url("/assets/intro.otf");
+	src: url("../assets/intro.otf");
 }
 
-/* custon css styles */
-body{
+/* custom css styles */
+body {
 	background-color: #fff;
 	font-family: 'Intro', sans-serif;
 	color: rgba(0,0,0,0.5);
+	text-transform: uppercase;
 }
 a, a:link, a:active {
 	text-decoration: none;
@@ -18,10 +19,11 @@ h1, h1 a {
 	font-size: 6vw;
 	position: relative;
 	transition: ease-in 0.2s;
+	text-transform: uppercase;
 }
 h1 a:hover { }
 h2 { font-size: 4vw; }
-p { font-size: 1.8em; display: inline; line-height: 1.5em; }
+p { font-size: 1.8em; display: inline; line-height: 1.5em; text-transform: uppercase; }
 p#retro a {
 	border-bottom: 5px solid rgba(188,17,66,0.70);
 	color: rgba(0,0,0,0.5);
@@ -114,6 +116,22 @@ p#vision-statement {
   background: #bc1142;
 	color: #fff;
 }
+#download {
+	background-color: transparent;
+	border: 5px solid rgba(188,17,66,1.00);
+	border-radius: 15px;
+	color: #bc1142;
+  font-size: 2vw;
+	opacity: 1;
+  padding: 15px 10px 10px;
+	text-decoration: none;
+  transition:  ease-in 0.2s ease-out 0.2s;
+}
+#download a { color: #bc1142; opacity: 1.0; }
+#download:hover, #download a:hover {
+  background: #bc1142;
+	color: #fff;
+}
 .overlay {
   background: rgba(0,0,0,0.5);
   opacity: 0;
@@ -144,8 +162,17 @@ p#vision-statement {
 	padding: 5px 0 5px 5px;
 	text-align: left;
 }
+.popup h1 {
+	color: #bc1142;
+	font-size: 2vw;
+	padding-bottom: 15px;
+	text-align: center;
+  width: 100%;
+}
 .popup h2 {
-	font-size: 1.8vw;
+	color: rgba(0,0,0,0.5);
+	font-size: 2vw;
+	padding-bottom: 5px;
 	text-align: center;
   width: 100%;
 }
@@ -160,15 +187,32 @@ p#vision-statement {
   color: #404040;
 }
 .popup .close:hover { color: #bc1142; }
-#download, #download a { color: #bc1142; padding-top: 2.5%; transition: 0.5s ease-in, 0.5s ease-out; }
+/*
+#download, #download a { 
+	color: #bc1142;
+	font-size: 2vw;
+	padding-top: 2.5%; 
+	transition: 0.5s ease-in, 0.5s ease-out; }
 #download:hover, #download a:hover { opacity: 0.7; transition: 0.5s ease-in, 0.5s ease-out; }
-
+*/
+.linkSlider { margin-bottom: 10px; }
+.linkHeading { border-bottom: 5px solid transparent; display: block; width: auto; }
+.linkHeading:hover { color: rgba(188,17,66,1.00); cursor: pointer; }
+.linkExpand { }
 #credits { 
 	width: 100%;
 }
 p.team {
 	display: block;
 }
+#credits ul { font-family: 'Great Day', 'Intro', sans-serif; text-transform: none; }
+#credits li { 
+	font-size: 1em;
+	display: inline-table; 
+	list-style-type: none; 
+	padding-left: 3%;
+}
+#credits li:first-child { padding-left: 0; margin-left: -2%; }
 #credits img {
 	bottom: 5px;
 	display: inline-block;
@@ -178,7 +222,7 @@ p.team {
 	max-width: 5%;
 }
 #credits img:first-child {
-	padding-left: -2%;
+	padding-left: -4%;
 }
 #backToTop {
 	left: 2%;
