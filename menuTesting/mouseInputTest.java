@@ -1,7 +1,14 @@
-import java.awt.event.MouseListener;
+package MenuPackage;
+
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 
+/**
+ * This class captures the location of the mouse upon a mouse "click".
+ * Depending on the box that is selected (boxed correspond with the Menu image)
+ * a different game can be opened or the menu program can be closed.
+ */
 public class mouseInputTest implements MouseListener{
   public void mouseClicked(MouseEvent e){
   }
