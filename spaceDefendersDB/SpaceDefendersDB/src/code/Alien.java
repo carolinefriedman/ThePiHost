@@ -16,6 +16,11 @@ public class Alien{
 
   Rectangle boundingBox;
 
+  /**
+   *
+   * @param x x coordinate of alien on jFrame
+   * @param y y coordinate of alien on jFrame
+   */
   public Alien(int x, int y){
     this.x = x;
     this.y = y;
@@ -24,6 +29,12 @@ public class Alien{
     bomb = new AlienBomb(this);
   }
 
+  /**
+   * Changes coordinate variables of alien instance
+   *
+   * @param game Driver instance of the game
+   *
+   */
   public void tick(spaceDefender game){
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
 
@@ -42,6 +53,12 @@ public class Alien{
     this.bomb.tick(game, this);
   }
 
+  /**
+   *
+   * Strictly for displaying alien instance on screen
+   *
+   * @param graphics same instance as used in spaceDefender game instance
+   */
   public void render(Graphics graphics){
     graphics.setColor(Color.GREEN);
     graphics.fillOval(x, y, width, height);
