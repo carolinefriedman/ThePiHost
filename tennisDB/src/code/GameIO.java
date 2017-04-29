@@ -3,12 +3,18 @@ package code;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/** Allows for user control over the player paddle */
 public class GameIO implements KeyListener{
 
   public GameIO(Tennis tennis){
     tennis.addKeyListener(this);
   }
 
+  /**
+   *  Set moveUp to true if player pressed up arrow.
+   *  Set moveDown to true if player pressed down arrow.
+   *  Allow user to pass the game entrance screen by pressing spacebar.
+   */
   public void keyPressed(KeyEvent event){
     int keyCode = event.getKeyCode();
 
@@ -26,6 +32,9 @@ public class GameIO implements KeyListener{
 
   }
 
+  /**
+   * Once user releases a key, respond accordingly to keep the player paddle from constantly moving.
+   */
   public void keyReleased(KeyEvent event){
     int keyCode = event.getKeyCode();
 

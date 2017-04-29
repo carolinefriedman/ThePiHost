@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Rectangle;
 
+/**
+ * Class for automated paddle
+ */
 public class ComputerPaddle{
   public int x;
   public int y;
@@ -20,7 +23,10 @@ public class ComputerPaddle{
     boundingBox = new Rectangle(x, y, width, height);
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
   }
-
+  /**
+   * Automates the movement of the paddle to follow the y-coordinate position of the ball
+   * @param game Main driver Tennis instance
+   */
   public void tick(Tennis game){
     boundingBox.setBounds(this.x, this.y, this.width, this.height);
 
@@ -32,6 +38,10 @@ public class ComputerPaddle{
     }
   }
 
+  /**
+   * Used strictly to display the automated paddle graphic.
+   * @param graphics Main driver graphics instance
+   */
   public void render(Graphics graphics){
     graphics.setColor(Color.GREEN);
     graphics.fillRect(x, y, width, height);
