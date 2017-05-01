@@ -26,16 +26,27 @@ This first method of accessing our website at the url that is hosted by the rasp
 The second method of accessing our website is at http://creative.colorado.edu/~cafr3980/the-pi-host/ .  This location offers an identical website as the one hosted by the Pi except that it can be accessed at any time.
 <br /><br />
 Once at our website, simply scroll down the page to the download section and click on “DOWNLOAD” to obtain the application package.  The following steps and dependencies must be observed to launch our application:
-<br /><br />
+
+## Repository Organization
+In the master branch of our github repository, you fill find the folliwing files and folders:<br />
+- Automated Testing
+
+## How to Build and Run
+### Installing Application
 Dependencies:
 1. Program must be run on a Mac computer
 2. User must have Java installed
+
 <br /><br />
+
 Download and Installation Steps:
 1. Place the downloaded archive file in your directory of choice.
 2. Untar the file with the command tar -xvzf ThePiHostApp.tar.gz
 3. Enter uncompressed directory and double click ThePiHostLauncher.jar
 4. Enjoy
+
+### Buidling and running source code, unit tests, etc.
+asdf
 
   
 
